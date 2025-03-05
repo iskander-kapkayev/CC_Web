@@ -74,6 +74,7 @@ async function signInUser(email, password) {
     (signInCheck) ? true:false;
 }
 
+//test for signupregister
 if (window.location.href === webURL) {
     document.addEventListener("DOMContentLoaded", async function() {
         if (await signUpRegister('animasu', 'akuma@gmail.com', '829a7sd')) {
@@ -81,7 +82,7 @@ if (window.location.href === webURL) {
         } else {
             console.log('registration was a failure');
         }
-    });
+    }); 
 }
 // adding event listeners for user login and registration forms
 
