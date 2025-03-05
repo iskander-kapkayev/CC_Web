@@ -1,10 +1,16 @@
+/*
+Universal URL to access server
+*/
+
+const webURL = 'https://cc-web-iota.vercel.app';
+const servURL = 'https://cc-server-lake.vercel.app';
 
 /*
 Async function call to fetch http request
 */
 
-async function fetchDBData (url) {
-    let response = await fetch(url);
+async function fetchDBData (URL) {
+    let response = await fetch(URL);
     let data = await response.json();
     return data;
 }
@@ -21,7 +27,7 @@ adjusted from localhost to vercel (which now hosts the server connection!)
 let currentIndex = 0;
 
 async function moveToImage() {
-    let URL = 'https://caption-contest-server.vercel.app/graballimages';
+    let URL = `${servURL}/graballimages`;
     let imageURLs = await fetchDBData(URL); // this will fetch data from http request to grab all images
     let img = document.getElementById("myImage");
     currentIndex = (currentIndex + 1) % imageURLs.length;
@@ -37,7 +43,7 @@ Grab form data to sign in or register.
 
 // checks for a username/email that already exists
 async function signUpCheck(username, email) {
-    let URL = `https://caption-contest-server.vercel.app/checkifexists?username=${username}&email=${email}`;
+    let URL = `${servURL}/checkifexists?username=${username}&email=${email}`;
     let signUpCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
     (signUpCheck) ? true:false;
 }
@@ -49,7 +55,7 @@ async function signUpRegister(username, email, password) {
     const uniqueUser = await signUpCheck(username, email);
 
     if (uniqueUser) {
-        let URL = `https://caption-contest-server.vercel.app/register?username=${username}&email=${email}&password=${password}`;
+        let URL = `${servURL}/register?username=${username}&email=${email}&password=${password}`;
         let signUpCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
         (signUpCheck) ? true:false;
     } else {
@@ -62,14 +68,14 @@ async function signUpRegister(username, email, password) {
 // create a way to sign in as a regular user
 async function signInUser(email, password) {
 
-    let URL = `https://caption-contest-server.vercel.app/signin?email=${email}&password=${password}`;
+    let URL = `${servURL}/signin?email=${email}&password=${password}`;
     let signInCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
     (signInCheck) ? true:false;
 }
 
 // adding event listeners for user login and registration forms
 
-if (window.location.href === "https://caption-contest-server-35n2.vercel.app/signup.html") {
+if (window.location.href === `${webURL}/signup.html`) {
     console.log("im on the reg page");
 
     document.addEventListener("DOMContentLoaded", async function() {
@@ -109,7 +115,7 @@ if (window.location.href === "https://caption-contest-server-35n2.vercel.app/sig
     });
 } // only runs on the signup page script
 
-if (window.location.href === "https://caption-contest-server-35n2.vercel.app/login.html") {
+if (window.location.href === `${webURL}/login.html`) {
 
     document.addEventListener("DOMContentLoaded", async function() {
         // set reg and login forms
@@ -145,7 +151,7 @@ It connects with the image handler.
 // this function will connect with DB and find appropriate db captions for current image
 // currentIndex + 1 will represent the imageID we are handling
 async function displayCaptions() {
-    let URL = `https://caption-contest-server.vercel.app/collectcaptions?imageid=${currentIndex+1}`;
+    let URL = `${servURL}/collectcaptions?imageid=${currentIndex+1}`;
     let captions = await fetchDBData(URL); // this will fetch data from http request to grab all captions
 }
 
