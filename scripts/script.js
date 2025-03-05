@@ -97,19 +97,12 @@ if (window.location.href === `${webURL}/signup.html`) {
             const email = regForm.elements.emailReg.value;
             const password = regForm.elements.passwordReg.value;
         
-            console.log(username); //to print
-            console.log(email);
-            console.log(password);
-        
             // redirect user based on signup attempt
-            /*
             if (await signUpRegister(username, email, password)) {
-                console.log("in sign up register")
-                window.location.href = "https://caption-contest-server-35n2.vercel.app/";
+                window.location.href = webURL
             } else {
-                console.log("sign up register failed")
-                window.location.href = "https://caption-contest-server-35n2.vercel.app/signup.html";
-            }*/
+                window.location.href = `${webURL}/signup.html`;
+            }
         });
 
     });
