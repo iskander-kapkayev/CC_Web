@@ -81,6 +81,7 @@ if (window.location.href === webURL) {
         } else {
             console.log('registration was a failure');
         }
+    });
 }
 // adding event listeners for user login and registration forms
 
