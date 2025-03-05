@@ -93,9 +93,9 @@ if (window.location.href === `${webURL}/signup.html`) {
             console.log("im in the forRegFunction");
 
             // access the desired input through the var we setup
-            const username = regForm.elements.usernameReg;
-            const email = regForm.elements.emailReg;
-            const password = regForm.elements.passwordReg;
+            const username = regForm.elements.usernameReg.value;
+            const email = regForm.elements.emailReg.value;
+            const password = regForm.elements.passwordReg.value;
         
             console.log(username); //to print
             console.log(email);
