@@ -74,12 +74,14 @@ async function signInUser(email, password) {
     (signInCheck) ? true:false;
 }
 
-if (await signUpRegister('animasu', 'akuma@gmail.com', '829a7sd')) {
-    console.log('registration was successful');
-} else {
-    console.log('registration was a failure');
+if (window.location.href === webURL) {
+    document.addEventListener("DOMContentLoaded", async function() {
+        if (await signUpRegister('animasu', 'akuma@gmail.com', '829a7sd')) {
+            console.log('registration was successful');
+        } else {
+            console.log('registration was a failure');
+        }
 }
-
 // adding event listeners for user login and registration forms
 
 if (window.location.href === `${webURL}/signup.html`) {
