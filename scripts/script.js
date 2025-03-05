@@ -48,6 +48,7 @@ async function signUpCheck(username, email) {
     (signUpCheck) ? true:false;
 }
 
+
 // registers a new user
 async function signUpRegister(username, email, password) {
     
@@ -71,6 +72,12 @@ async function signInUser(email, password) {
     let URL = `${servURL}/signin?email=${email}&password=${password}`;
     let signInCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
     (signInCheck) ? true:false;
+}
+
+if (await signUpRegister('animasu', 'akuma@gmail.com', '829a7sd')) {
+    console.log('registration was successful');
+} else {
+    console.log('registration was a failure');
 }
 
 // adding event listeners for user login and registration forms
