@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&display=swap">
+    <!-- calls in the javascript code -->
+    <script src="./scripts/script.js"></script>
+
+    <title>Caption Contest!!</title>
+
+  </head>
+
+  <body>
+
+    <section class="header-container">
+
+      <h1>Iskander's Caption Contest!</h1>
+
+      <nav>
+        <ul>
+          <li><a href="./login.html">Login</a></li>
+          <li><a href="#image-container">Captions</a></li>
+          <li><a href="#about">About Me</a></li>
+        </ul>
+      </nav>
+
+    </section>
+
+    <!-- this div container will allow for nice centered boxy structure for image display -->
+    <section class="image-container">
+
+        <!-- points to the anime images, with a button allowing to cycle through it -->
+        <img id="myImage" src="./images/fire_alarm_deserted_island.jpg" alt="caption_images" />
+
+        <!-- these are the buttons to move back and forth -->
+        <button onclick="moveToImage()">Next Image</button>
+
+        <!-- when one of these buttons are clicked, the comment section should also change -->
+
+      <div class="comment-section">
+        <!-- for now, this is the comment section placeholder, where you can type -->
+        <h2>Sign up to participate</h2>
+        <textarea id="commentInput" placeholder="Write your comment here..."></textarea><br>
+
+        <!-- this is a submit button for comments -->
+        <button onclick="addComment()">Submit</button>
+      </div>
+
+      <div class="comments" id="comments">
+        <!-- for now, this is the comment display section placeholder -->
+        <h2>These are the current comments:</h2>
+      </div>
+
+    </section>
+
+    <footer id="about">
+      <p>
+        Posted by: Iskander Kay<br>
+        Contact information: never@dontcallme.com
+      </p>
+    </footer>
+
+  </body>
+
+</html>
