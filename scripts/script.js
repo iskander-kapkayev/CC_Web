@@ -54,10 +54,16 @@ async function signUpRegister(username, email, password) {
     
     // first check that you can sign up
     const uniqueUser = await signUpCheck(username, email);
-
+    console.log("checking if user is unique");
+    console.log(username);
+    console.log(email);
+    console.log(uniqueUser);
     if (uniqueUser) {
-        let URL = `${servURL}/register?username=${username}&email=${email}&password=${password}`;
+        console.log("user is unique and now register user");
+        let URL = `${servURL}/checkifexists?username=${username}&email=${email}&password=${password}`;
         let regCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
+        console.log(regCheck);
+        console.log(regCheck.message);
         (regCheck.message === "Success") ? true:false;
     } else {
         // if you can't sign up, then abort and alert console
@@ -67,7 +73,6 @@ async function signUpRegister(username, email, password) {
 
 // create a way to sign in as a regular user
 async function signInUser(email, password) {
-
     let URL = `${servURL}/signin?email=${email}&password=${password}`;
     let signInCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
     (signInCheck.message === "Success") ? true:false;
