@@ -61,7 +61,6 @@ async function signUpRegister(username, email, password) {
         (signUpCheck) ? true:false;
     } else {
         // if you can't sign up, then abort and alert console
-        console.log('This username or email is already in use and thus cant be used');
         return false;
     }
 }
@@ -75,9 +74,12 @@ async function signInUser(email, password) {
 }
 
 //test for signupregister works on page load
-if (window.location.href === webURL) {
+if (window.location.href === `${webURL}/`) {
+    console.log("im on the front page");
     document.addEventListener("DOMContentLoaded", async function() {
-        if (await signUpRegister('animasu', 'akuma@gmail.com', '829a7sd')) {
+        console.log("im inside event listener");
+        const registration = await signUpRegister('animasu', 'akuma@gmail.com', '829a7sd');
+        if (registration) {
             console.log('registration was successful');
         } else {
             console.log('registration was a failure');
