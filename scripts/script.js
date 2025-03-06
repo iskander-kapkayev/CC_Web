@@ -11,7 +11,8 @@ Async function call to fetch http request
 
 async function fetchDBData (URL) {
     let response = await fetch(URL);
-    return response;
+    let data = response.json();
+    return data;
 }
 
 /*
@@ -44,7 +45,7 @@ Grab form data to sign in or register.
 async function signUpCheck(username, email) {
     let URL = `${servURL}/checkifexists?username=${username}&email=${email}`;
     let signUpCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
-    (signUpCheck.status === 200) ? true:false;
+    (signUpCheck.message === "Success") ? true:false;
 }
 
 
@@ -54,10 +55,10 @@ async function signUpRegister(username, email, password) {
     // first check that you can sign up
     const uniqueUser = await signUpCheck(username, email);
 
-    if (uniqueUser.status === 200) {
+    if (uniqueUser.message === "Success") {
         let URL = `${servURL}/register?username=${username}&email=${email}&password=${password}`;
         let regCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
-        (regCheck.status === 200) ? true:false;
+        (regCheck.message === "Success") ? true:false;
     } else {
         // if you can't sign up, then abort and alert console
         return false;
@@ -69,7 +70,7 @@ async function signInUser(email, password) {
 
     let URL = `${servURL}/signin?email=${email}&password=${password}`;
     let signInCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
-    (signInCheck.status === 200) ? true:false;
+    (signInCheck.message === "Success") ? true:false;
 }
 
 //test for signupregister works on page load
