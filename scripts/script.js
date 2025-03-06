@@ -74,7 +74,7 @@ async function signInUser(email, password) {
     (signInCheck) ? true:false;
 }
 
-//test for signupregister
+//test for signupregister works on page load
 if (window.location.href === webURL) {
     document.addEventListener("DOMContentLoaded", async function() {
         if (await signUpRegister('animasu', 'akuma@gmail.com', '829a7sd')) {
