@@ -43,9 +43,16 @@ Grab form data to sign in or register.
 
 // checks for a username/email that already exists
 async function signUpCheck(username, email) {
+    console.log("checking if user is unique");
+    console.log(username);
+    console.log(email);
     let URL = `${servURL}/checkifexists?username=${username}&email=${email}`;
     let signUpCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
-    (signUpCheck.message === "Success") ? true:false;
+    if (signUpCheck.message === "Success") {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 
@@ -54,7 +61,7 @@ async function signUpRegister(username, email, password) {
     
     // first check that you can sign up
     const uniqueUser = await signUpCheck(username, email);
-    console.log("checking if user is unique");
+    console.log("after unique user def");
     console.log(username);
     console.log(email);
     console.log(uniqueUser);
