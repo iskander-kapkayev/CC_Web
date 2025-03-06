@@ -11,7 +11,7 @@ Async function call to fetch http request
 
 async function fetchDBData (URL) {
     let response = await fetch(URL);
-    let data = response.json();
+    let data = await response.json();
     return data;
 }
 
