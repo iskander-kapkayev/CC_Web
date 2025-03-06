@@ -55,7 +55,7 @@ async function signUpRegister(username, email, password) {
     // first check that you can sign up
     const uniqueUser = await signUpCheck(username, email);
 
-    if (uniqueUser.message === "Success") {
+    if (uniqueUser) {
         let URL = `${servURL}/register?username=${username}&email=${email}&password=${password}`;
         let regCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
         (regCheck.message === "Success") ? true:false;
