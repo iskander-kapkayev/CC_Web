@@ -67,7 +67,7 @@ async function signUpRegister(username, email, password) {
     console.log(uniqueUser);
     if (uniqueUser) {
         console.log("user is unique and now register user");
-        let URL = `${servURL}/checkifexists?username=${username}&email=${email}&password=${password}`;
+        let URL = `${servURL}/register?username=${username}&email=${email}&password=${password}`;
         let regCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
         console.log(regCheck);
         console.log(regCheck.message);
@@ -93,6 +93,7 @@ async function signInUser(email, password) {
     }
 }
 
+/*
 //test for signupregister works on page load
 if (window.location.href === `${webURL}/`) {
     console.log("im on the front page");
@@ -106,6 +107,8 @@ if (window.location.href === `${webURL}/`) {
         }
     }); 
 }
+*/
+
 // adding event listeners for user login and registration forms
 
 if (window.location.href === `${webURL}/signup.html`) {
