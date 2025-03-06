@@ -43,41 +43,22 @@ Grab form data to sign in or register.
 
 // checks for a username/email that already exists
 async function signUpCheck(username, email) {
-    console.log("checking if user is unique");
-    console.log(username);
-    console.log(email);
     let URL = `${servURL}/checkifexists?username=${username}&email=${email}`;
     let signUpCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
-    if (signUpCheck.message === "Success") {
-        return true;
-    } else {
-        return false;
-    }
+    return (signUpCheck.message === "Success");
 }
-
 
 // registers a new user
 async function signUpRegister(username, email, password) {
-    
     // first check that you can sign up
     const uniqueUser = await signUpCheck(username, email);
-    console.log("after unique user def");
-    console.log(username);
-    console.log(email);
-    console.log(uniqueUser);
+
     if (uniqueUser) {
-        console.log("user is unique and now register user");
         let URL = `${servURL}/register?username=${username}&email=${email}&password=${password}`;
         let regCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
-        console.log(regCheck);
-        console.log(regCheck.message);
-        if (regCheck.message === "Success") {
-            return true;
-        } else {
-            return false;
-        }
+        return (regCheck.message === "Success");
     } else {
-        // if you can't sign up, then abort and alert console
+        // if you can't sign up, then abort
         return false;
     }
 }
@@ -86,11 +67,7 @@ async function signUpRegister(username, email, password) {
 async function signInUser(email, password) {
     let URL = `${servURL}/signin?email=${email}&password=${password}`;
     let signInCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
-    if (signInCheck.message === "Success") {
-        return true;
-    } else {
-        return false;
-    }
+    return (signInCheck.message === "Success");
 }
 
 /*
@@ -175,13 +152,18 @@ if (window.location.href === `${webURL}/login.html`) {
 /*
 This section is for comment switching.
 It connects with the image handler.
+Only approved captions will be displayed
 */
 
-// this function will connect with DB and find appropriate db captions for current image
-// currentIndex + 1 will represent the imageID we are handling
+// this function will grab captions for current image
 async function displayCaptions() {
+    // currentIndex + 1 will represent the imageID we are handling
     let URL = `${servURL}/collectcaptions?imageid=${currentIndex+1}`;
-    let captions = await fetchDBData(URL); // this will fetch data from http request to grab all captions
+    let captions = await fetchDBData(URL);
+    //let thisImageCaptions = captions(0)(0);
+
+    // display top 10 captions only
+    
 }
 
 // placeholder for comments at the moment
