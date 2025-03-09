@@ -47,8 +47,8 @@ async function assignImage() {
     let imageURLs = await fetchDBData(URL); // this will fetch data from http request to grab all images
     
     // we can now populate all urls into array
-    imageURLS.forEach(url => {
-        allImages.push(url)
+    imageURLs.forEach(url => {
+        allImages.push(url);
     });
 
     // set the first image on start up
@@ -61,7 +61,7 @@ async function assignImage() {
 // on start up of index.html
 if (window.location.href === `${webURL}/`) {
     document.addEventListener('DOMContentLoaded', async function() {
-        assignImage();
+        await assignImage();
     }); 
 }
 
