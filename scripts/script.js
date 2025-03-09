@@ -179,10 +179,9 @@ Only approved captions will be displayed
 // Display up to 10 posts
 function displayCaptions(currentCaptions) {
     const postContainer = document.getElementById('post-container');
-
-   try {
+    postContainer.innerHTML = '';
+    try {
         currentCaptions.slice(0, 10).forEach(post => {
-            postContainer.innerHTML = '';
             const postElement = document.createElement('div');
             postElement.className = 'post';
             postElement.innerHTML = `
@@ -192,9 +191,9 @@ function displayCaptions(currentCaptions) {
             `;
             postContainer.appendChild(postElement);
         });
-   } catch (error) {
+    } catch (error) {
     console.error(error);
-  }
+    }
 }
 
 // this function will grab captions for current image

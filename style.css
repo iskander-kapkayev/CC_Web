@@ -98,16 +98,25 @@ Below styles will reflect the caption section
 .post {
   display: flex;
   align-items: center;
-  margin: 5px 0;
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
-.username {
-  font-weight: bold;
+.username, .content, .upvotes {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   margin-right: 10px;
 }
 .upvotes {
   margin-left: auto;
   color: green;
 }
+
+/*
+Below styles will reflect the user typing caption section
+*/
 
 .comment-section {
     margin-top: 20px;
