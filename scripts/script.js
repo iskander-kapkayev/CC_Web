@@ -25,17 +25,44 @@ adjusted from localhost to vercel (which now hosts the server connection!)
 
 // create a way to cycle through the caption contest images (let's add more anime images!)
 let currentIndex = 0;
+let allImages = [];
 
 async function moveToImage() {
+    /*
     let URL = `${servURL}/graballimages`;
     let imageURLs = await fetchDBData(URL); // this will fetch data from http request to grab all images
+    */
     let img = document.getElementById('myImage');
-    currentIndex = (currentIndex + 1) % imageURLs.length;
-    img.src = imageURLs[currentIndex];
+    currentIndex = (currentIndex + 1) % allImages.length;
+    img.src = allImages[currentIndex];
     img.alt = `index ${currentIndex}`;
 
-    // once an image is changed, then the currentIndex is changed
+    // once an image is changed, then the currentIndex 
+    // is changed and captions need to be grabbed
     collectCaptions();
+}
+
+async function assignImage() {
+    let URL = `${servURL}/graballimages`;
+    let imageURLs = await fetchDBData(URL); // this will fetch data from http request to grab all images
+    
+    // we can now populate all urls into array
+    imageURLS.forEach(url => {
+        allImages.push(url)
+    });
+
+    // set the first image on start up
+    let img = document.getElementById('myImage');
+    img.src = allImages[currentIndex];
+    img.alt = `index ${currentIndex}`;
+    collectCaptions();
+}
+
+// on start up of index.html
+if (window.location.href === `${webURL}/`) {
+    document.addEventListener('DOMContentLoaded', async function() {
+        assignImage();
+    }); 
 }
 
 /*
@@ -139,15 +166,6 @@ if (window.location.href === `${webURL}/login.html`) {
             const email = loginForm.elements.email;
             const password = loginForm.elements.password;
 
-            // redirect user based on signup attempt
-            /*
-            if (await signInUser(email, password)) {
-                window.location.href = 'https://caption-contest-server-35n2.vercel.app/';
-            } else {
-                window.location.href = 'https://caption-contest-server-35n2.vercel.app/signup.html';
-            }
-            */
-
         });
     });
 } // only runs on the login page script
@@ -164,6 +182,7 @@ function displayCaptions(currentCaptions) {
 
    try {
         currentCaptions.slice(0, 10).forEach(post => {
+            postContainer.innerHTML = '';
             const postElement = document.createElement('div');
             postElement.className = 'post';
             postElement.innerHTML = `
