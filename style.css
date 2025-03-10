@@ -42,7 +42,7 @@ Below styles will reflect the navigation menu
   display: block;
   color: #000000;
   text-decoration: none;
-  padding: 5px 20px; /* 5px top/bottom, 20px left/right */
+  padding: 5px 80px; /* 5px top/bottom, 80px left/right */
 }
 
 .header-container nav ul li a:hover {
@@ -118,6 +118,18 @@ Below styles will reflect the caption section
   align-self: flex-end;
   color: #00801c;
   margin-right: 10px;
+}
+
+.post #postUpvotes a {
+  text-decoration: none;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.post #postUpvotes a:hover {
+    background-color: #32a889;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 /*
