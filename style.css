@@ -121,6 +121,7 @@ Below styles will reflect the caption section
 }
 
 .post #postUpvotes a {
+  color: #00801c;
   text-decoration: none;
   padding: 5px;
   transition: background-color 0.3s ease;
