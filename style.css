@@ -47,6 +47,7 @@ Below styles will reflect the navigation menu
 
 .header-container nav ul li a:hover {
   background-color: #32a889;
+  border-radius: 8px;
 }
 
 .image-container {
