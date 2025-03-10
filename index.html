@@ -19,7 +19,7 @@
       <nav>
         <ul>
           <li><a href="./login.html">Login</a></li>
-          <li><a href="#image-container">Captions</a></li>
+          <li><a href="#post-container">Captions</a></li>
           <li><a href="#about">About Me</a></li>
         </ul>
       </nav>
@@ -33,7 +33,7 @@
         <img id="myImage" src="" alt="caption_images" />
 
         <!-- these are the buttons to move back and forth -->
-        <button onclick="moveToImage()">Next Image</button>
+        <button onclick="moveToImage()">Next Image</button><br>
 
         <!-- when one of these buttons are clicked, the comment section should also change -->
 
@@ -44,23 +44,17 @@
       <div class="comment-section">
         <!-- for now, this is the comment section placeholder, where you can type -->
         <h2>Sign up to participate</h2>
-        <textarea id="commentInput" placeholder="Write your comment here..."></textarea><br>
+        <textarea id="commentInput" placeholder="Write your caption here..."></textarea><br>
 
         <!-- this is a submit button for comments -->
         <button onclick="addComment()">Submit</button>
-      </div>
-
-      <div class="comments" id="comments">
-        <!-- for now, this is the comment display section placeholder -->
-        <h2>These are the current comments:</h2>
       </div>
 
     </section>
 
     <footer id="about">
       <p>
-        Posted by: Iskander Kay<br>
-        Contact information: never@dontcallme.com
+        Created by: Iskander Kay
       </p>
     </footer>
 
