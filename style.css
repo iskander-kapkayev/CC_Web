@@ -104,7 +104,7 @@ Below styles will reflect the caption section
 }
 
 .post #postUser {
-  padding-left: 20px;
+  padding-left: 10px;
   align-self: flex-start;
   color: #251ac2;
 }
@@ -117,6 +117,7 @@ Below styles will reflect the caption section
 .post #postUpvotes {
   align-self: flex-end;
   color: #00801c;
+  padding-right: 10px;
 }
 
 .post #postUpvotes a {
