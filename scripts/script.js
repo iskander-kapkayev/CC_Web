@@ -19,7 +19,6 @@ async function fetchDBData (URL) {
 This section is for image handling.
 Will http request into localhost to retrieve URLs from database.
 Then, function to cycle indices will move between images.
-
 adjusted from localhost to vercel (which now hosts the server connection!)
 */
 
@@ -130,9 +129,7 @@ if (window.location.href === `${webURL}/signup.html`) {
         regForm.addEventListener('submit', async function() {
             
             event.preventDefault(); // prevents redirection
-
             const regForm = document.getElementById('registerFormData');
-
             console.log('im in the forRegFunction');
 
             // access the desired input through the var we setup

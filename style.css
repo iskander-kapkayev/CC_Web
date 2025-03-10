@@ -97,7 +97,8 @@ Below styles will reflect the caption section
   flex-direction: column; /* align items vertically */
   
   margin-top: 5px;
-  margin-left: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -107,25 +108,23 @@ Below styles will reflect the caption section
 .post #postUser {
   align-self: flex-start;
   color: #251ac2;
-  margin-right: 10px;
 }
 
 .post #postCaption {
   align-self: flex-center;
   color: #000000;
-  margin-right: 10px;
 }
 
 .post #postUpvotes {
   align-self: flex-end;
   color: #00801c;
-  margin-right: 10px;
 }
 
 .post #postUpvotes a {
   color: #00801c;
   text-decoration: none;
   padding: 5px;
+  border-radius: 8px;
   transition: background-color 0.3s ease;
 }
 
