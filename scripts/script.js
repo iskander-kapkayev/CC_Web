@@ -191,8 +191,7 @@ function displayCaptions(currentCaptions) {
             postElement.className = 'post';
             postElement.innerHTML = `
                 <div id='postCaption'>${post.captiontext}</div>
-                <div id='postUser'>${post.username}:</div>
-                <div id='postUpvotes'><a onclick='tester()'>Upvotes:</a> ${post.upvotes}</div>
+                <div id='postUser'>Written by: ${post.username} | <a id='postUpvotes' onclick='tester()'>Upvotes:</a> ${post.upvotes}</div>
             `;
             postContainer.appendChild(postElement);
         });
@@ -231,7 +230,6 @@ function addCaption() {
         alert('You are not logged in... login first!')
     } else {
         const captionText = document.getElementById('captionInput');
-
         alert('Your caption has been posted. If flagged, it will be removed.')
     }
 }
