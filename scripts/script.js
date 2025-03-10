@@ -39,7 +39,7 @@ async function moveToImage() {
 
     // once an image is changed, then the currentIndex 
     // is changed and captions need to be grabbed
-    collectCaptions();
+    await collectCaptions();
 }
 
 async function assignImage() {
@@ -185,7 +185,7 @@ function displayCaptions(currentCaptions) {
             const postElement = document.createElement('div');
             postElement.className = 'post';
             postElement.innerHTML = `
-                <div id='postUser'>${post.username}: </div>
+                <div id='postUser'>${post.username}:<br></div>
                 <div id='postCaption'>${post.captiontext}</div>
                 <div id='postUpvotes'>Upvotes: ${post.upvotes}</div>
             `;
