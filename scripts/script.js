@@ -185,7 +185,7 @@ function displayCaptions(currentCaptions) {
             const postElement = document.createElement('div');
             postElement.className = 'post';
             postElement.innerHTML = `
-                <div id='postUser'>${post.username}:<br></div>
+                <div id='postUser'>${post.username}:</div><br>
                 <div id='postCaption'>${post.captiontext}</div>
                 <div id='postUpvotes'>Upvotes: ${post.upvotes}</div>
             `;
