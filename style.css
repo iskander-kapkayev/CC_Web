@@ -96,12 +96,12 @@ Below styles will reflect the caption section
 */
 
 .post {
+  
   margin-top: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f5f5f5;
-  text-align: center;
 }
 
 .post postUser {
