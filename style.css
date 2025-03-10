@@ -96,6 +96,7 @@ Below styles will reflect the caption section
   flex-direction: column; /* align items vertically */
   
   margin-top: 5px;
+  margin-left: 5px;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 8px;
