@@ -191,7 +191,10 @@ function displayCaptions(currentCaptions) {
             postElement.className = 'post';
             postElement.innerHTML = `
                 <div id='postCaption'>${post.captiontext}</div>
-                <div id='postUser'>Written by: ${post.username} | <a id='postUpvotes' onclick='tester()'>Upvotes:</a> ${post.upvotes}</div>
+                <div id='ending'>
+                    <div id='postUser'>Written by: ${post.username} | </div>
+                    <div id='postUpvotes'><a onclick='tester()'>Upvotes:</a> ${post.upvotes}</div>
+                </div>
             `;
             postContainer.appendChild(postElement);
         });

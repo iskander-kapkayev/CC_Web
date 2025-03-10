@@ -103,9 +103,12 @@ Below styles will reflect the caption section
   background-color: #f5f5f5;
 }
 
+.post #ending {
+  align-self: flex-end;
+}
+
 .post #postUser {
   padding-left: 10px;
-  align-self: flex-end;
   color: #251ac2;
   font-size: 80%;
 }
@@ -117,7 +120,6 @@ Below styles will reflect the caption section
 
 .post #postUpvotes {
   font-size: 80%;
-  align-self: flex-end;
   color: #00801c;
   padding-right: 10px;
   text-decoration: none;
@@ -125,7 +127,7 @@ Below styles will reflect the caption section
   transition: background-color 0.3s ease;
 }
 
-.post #postUpvotes hover {
+.post #postUpvotes a:hover {
   cursor: pointer;
   color: #ffffff;
   background-color: #32a889;
