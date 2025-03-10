@@ -96,7 +96,11 @@ Below styles will reflect the caption section
 */
 
 .post {
-  
+  display: flex;
+  flex-direction: row; /* align items in a row */
+  align-items: center; /* align items vertically in the center */
+  justify-content: space-between; /* distribute space between items */
+
   margin-top: 10px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -106,14 +110,17 @@ Below styles will reflect the caption section
 
 .post postUser {
   color: #382bf0;
+  margin-right: 10px;
 }
 
 .post postCaption {
   color: #000000;
+  margin-right: 10px;
 }
 
 .post postUpvotes {
   color: #00801c;
+  margin-right: 10px;
 }
 
 /*
