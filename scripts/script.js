@@ -54,7 +54,7 @@ async function assignImage() {
     let img = document.getElementById('myImage');
     img.src = allImages[currentIndex];
     img.alt = `index ${currentIndex}`;
-    collectCaptions();
+    await collectCaptions();
 }
 
 // on start up of index.html
@@ -97,6 +97,15 @@ async function signInUser(email, password) {
     let URL = `${servURL}/signin?email=${email}&password=${password}`;
     let signInCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
     return (signInCheck.message === 'Success');
+
+    // if we adjust this to successfully return the username
+    if (signInCheck.message === 'Success') {
+        URL = `${servURL}/findusername?email=${email}`;
+        let usernameGrab = await fetchDBData(URL); // should return only 1 username
+        allowUser.push(usernameGrab[0]); // push username into global space
+    } else {
+        alert('Password or email combination did not work. Try again.')
+    }
 }
 
 /*
@@ -118,10 +127,9 @@ if (window.location.href === `${webURL}/`) {
 // adding event listeners for user login and registration forms
 
 if (window.location.href === `${webURL}/signup.html`) {
-    console.log('im on the reg page');
-
+    
     document.addEventListener('DOMContentLoaded', async function() {
-        console.log('im in DomContent');
+        
         // set reg and login forms
         const regForm = document.getElementById('registerFormData');
 
@@ -168,7 +176,7 @@ if (window.location.href === `${webURL}/login.html`) {
 } // only runs on the login page script
 
 /*
-This section is for comment switching.
+This section is for caption switching.
 It connects with the image handler.
 Only approved captions will be displayed
 */
@@ -178,12 +186,12 @@ function displayCaptions(currentCaptions) {
     const postContainer = document.getElementById('post-container');
     postContainer.innerHTML = '';
     try {
-        currentCaptions.slice(0, 10).forEach(post => {
+        currentCaptions.slice(0, 20).forEach(post => {
             const postElement = document.createElement('div');
             postElement.className = 'post';
             postElement.innerHTML = `
-                <div id='postUser'>${post.username}:</div>
                 <div id='postCaption'>${post.captiontext}</div>
+                <div id='postUser'>${post.username}:</div>
                 <div id='postUpvotes'><a onclick='tester()'>Upvotes:</a> ${post.upvotes}</div>
             `;
             postContainer.appendChild(postElement);
@@ -209,18 +217,21 @@ async function collectCaptions() {
     displayCaptions(captions);
 }
 
-// placeholder for comments at the moment
-function addComment() {
-    const commentInput = document.getElementById('commentInput');
-    const comments = document.getElementById('comments');
+/*
+This section is for adding captions.
+It connects with the image handler.
+Only approved captions will be displayed
+*/
 
-    if (commentInput.value.trim() !== '') {
-        const comment = document.createElement('div');
-        comment.className = 'comment';
-        comment.textContent = commentInput.value;
-        comments.appendChild(comment);
-        commentInput.value = ''; // Clear the input
+const allowUser = [];
+
+// placeholder for comments at the moment
+function addCaption() {
+    if (allowUser.length === 0){
+        alert('You are not logged in... login first!')
     } else {
-        alert('Please enter a comment before submitting.');
+        const captionText = document.getElementById('captionInput');
+
+        alert('Your caption has been posted. If flagged, it will be removed.')
     }
 }
