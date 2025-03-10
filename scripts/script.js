@@ -185,15 +185,21 @@ function displayCaptions(currentCaptions) {
             const postElement = document.createElement('div');
             postElement.className = 'post';
             postElement.innerHTML = `
-                <div id='postUser'>${post.username}:</div><br>
+                <div id='postUser'>${post.username}:</div>
                 <div id='postCaption'>${post.captiontext}</div>
-                <div id='postUpvotes'>Upvotes: ${post.upvotes}</div>
+                <div id='postUpvotes'><a href='#' onclick='tester()'>Upvotes:</a> ${post.upvotes}</div>
             `;
             postContainer.appendChild(postElement);
         });
     } catch (error) {
     console.error(error);
     }
+}
+
+// tester function
+function tester() {
+    // this function is clicked
+    console.log('the tester function was clicked!');
 }
 
 // this function will grab captions for current image
