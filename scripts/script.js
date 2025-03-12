@@ -192,7 +192,7 @@ function displayCaptions(currentCaptions) {
             postElement.innerHTML = `
                 <div id='postCaption'>${post.captiontext}</div>
                 <div id='ending'>
-                    <span id='postUser'>- ${post.username} | </span> 
+                    <span id='postUser'>- ${post.username} </span> 
                     <span id='postUpvotes'><a onclick='tester()'>&#x2764</a> ${post.upvotes}</span>
                 </div>
             `;
