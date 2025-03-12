@@ -24,7 +24,6 @@ adjusted from localhost to vercel (which now hosts the server connection!)
 
 // create a way to cycle through the caption contest images (let's add more anime images!)
 let currentIndex = 0;
-let allImages = [];
 
 async function moveToImage() {
     /*
@@ -32,8 +31,13 @@ async function moveToImage() {
     let imageURLs = await fetchDBData(URL); // this will fetch data from http request to grab all images
     */
     let img = document.getElementById('myImage');
-    currentIndex = (currentIndex + 1) % allImages.length;
-    img.src = allImages[currentIndex];
+
+    // Retrieving an array
+    const storedArrayString = sessionStorage.getItem('imageURLs');
+    const storedArray = JSON.parse(storedArrayString);
+
+    currentIndex = (currentIndex + 1) % storedArray.length;
+    img.src = storedArray[currentIndex];
     img.alt = `index ${currentIndex}`;
 
     // once an image is changed, then the currentIndex 
@@ -45,14 +49,18 @@ async function assignImage() {
     let URL = `${servURL}/graballimages`;
     let imageURLs = await fetchDBData(URL); // this will fetch data from http request to grab all images
     
+    /*
     // we can now populate all urls into array
     imageURLs.forEach(url => {
         allImages.push(url);
     });
+    */
+
+    sessionStorage.setItem('imageURLs', JSON.stringify(imageURLs));
 
     // set the first image on start up
     let img = document.getElementById('myImage');
-    img.src = allImages[currentIndex];
+    img.src = imageURLs[currentIndex];
     img.alt = `index ${currentIndex}`;
     await collectCaptions();
 }
