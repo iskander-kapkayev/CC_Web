@@ -114,14 +114,14 @@ Below styles will reflect the caption section
 }
 
 .post #postCaption {
-  font-size: 125%;
+  font-size: 110%;
   align-self: flex-start;
   color: #000000;
 }
 
 .post #postUpvotes {
-  font-size: 125%;
-  color: #fa1008;
+  font-size: 110%;
+  color: #33a741;
   padding-right: 10px;
   text-decoration: none;
   border-radius: 8px;
