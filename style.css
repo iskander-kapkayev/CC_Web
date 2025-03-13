@@ -103,16 +103,18 @@ Below styles will reflect the caption section
   background-color: #f5f5f5;
 }
 
+.post #captuser {
+  align-self: flex-start;
+}
+
 .post #postUser {
   padding-left: 10px;
   color: #251ac2;
-  align-self: flex-start;
   font-size: 80%;
 }
 
 .post #postCaption {
   font-size: 110%;
-  align-self: flex-start;
   color: #000000;
 }
 
