@@ -103,10 +103,6 @@ Below styles will reflect the caption section
   background-color: #f5f5f5;
 }
 
-.post #ending {
-  align-self: flex-end;
-}
-
 .post #postUser {
   padding-left: 10px;
   color: #251ac2;
@@ -123,6 +119,7 @@ Below styles will reflect the caption section
   font-size: 110%;
   color: #33a741;
   padding-right: 10px;
+  align-self: flex-end;
   text-decoration: none;
   border-radius: 8px;
   transition: background-color 0.3s ease;
