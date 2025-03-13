@@ -106,6 +106,7 @@ Below styles will reflect the caption section
 .post #postUser {
   padding-left: 10px;
   color: #251ac2;
+  align-self: flex-start;
   font-size: 80%;
 }
 
