@@ -110,15 +110,8 @@ Grab form data to sign in or register.
 */
 
 // checks for a username/email that already exists
-async function signUpCheck(username, email) {
-    const URL = `${servURL}/checkifexists?username=${username}&email=${email}`;
-    const signUpCheck = await getDBData(URL); // this will fetch a success or error for signing up
-    return (signUpCheck.message === 'Success');
-}
-
-// checks for a username/email that already exists
-async function signUpCheckpost(thisUsername, thisEmail) {
-    const URL = `${servURL}/checkifexistspost`;
+async function signUpCheck(thisUsername, thisEmail) {
+    const URL = `${servURL}/checkifexists`;
     const body = {
         username: thisUsername,
         email: thisEmail
@@ -128,13 +121,17 @@ async function signUpCheckpost(thisUsername, thisEmail) {
 }
 
 // registers a new user
-async function signUpRegisterpost(thisUsername, thisEmail, thisPassword) {
+async function signUpRegister(thisUsername, thisEmail, thisPassword) {
     // first check that you can sign up
-    const uniqueUser = await signUpCheckpost(thisUsername, thisEmail);
+    const uniqueUser = await signUpCheck(thisUsername, thisEmail);
 
     if (uniqueUser) {
-        const URL = `${servURL}/registerpost`;
-        const body = { username: thisUsername, email: thisEmail, password: thisPassword };
+        const URL = `${servURL}/register`;
+        const body = { 
+            username: thisUsername, 
+            email: thisEmail, 
+            password: thisPassword 
+        };
         const regCheck = await postNoAuth(URL, body); // this will fetch a success or error for signing up
         return (regCheck.message === 'Success');
     } else {
@@ -196,7 +193,7 @@ if (window.location.href === `${webURL}/signup.html`) {
             const password = regForm.elements.passwordReg.value;
         
             // redirect user based on signup attempt
-            if (await signUpRegisterpost(username, email, password)) {
+            if (await signUpRegister(username, email, password)) {
                 window.location.href = webURL
             } else {
                 window.location.href = `${webURL}/signup.html`;
