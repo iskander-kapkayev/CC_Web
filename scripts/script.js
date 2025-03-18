@@ -141,9 +141,13 @@ async function signUpRegister(thisUsername, thisEmail, thisPassword) {
 }
 
 // create a way to sign in as a regular user
-async function signInUser(email, password) {
-    const URL = `${servURL}/signin?email=${email}&password=${password}`;
-    const signInCheck = await getDBData(URL); // this will fetch a token
+async function signInUser(thisEmail, thisPassword) {
+    const URL = `${servURL}/signin`;
+    const body = {
+        email: thisEmail,
+        password: thisPassword
+    };
+    const signInCheck = await postNoAuth(URL, body); // this will fetch a token
     if (signInCheck.message === 'Failure') {
         // no token was created
         alert('Password or email combination did not work. Try again.')
@@ -185,8 +189,7 @@ if (window.location.href === `${webURL}/signup.html`) {
             
             event.preventDefault(); // prevents redirection
             const regForm = document.getElementById('registerFormData');
-            console.log('im in the forRegFunction');
-
+            
             // access the desired input through the var we setup
             const username = regForm.elements.usernameReg.value;
             const email = regForm.elements.emailReg.value;
@@ -212,11 +215,20 @@ if (window.location.href === `${webURL}/login.html`) {
         // event listeners below
         loginForm.addEventListener('button', async function() {
             
+            event.preventDefault(); // prevents redirection
             const loginForm = document.getElementById('loginFormData');
-
+            
             // access the desired input through the var we setup
-            const email = loginForm.elements.email;
-            const password = loginForm.elements.password;
+            const email = regForm.elements.email.value;
+            const password = regForm.elements.password.value;
+        
+            // redirect user based on signup attempt
+            if (await signInUser(email, password)) {
+                console.log('user signed in');
+                console.log(sessionStorage.getItem('token'));
+            } else {
+                console.log('this did not work!');
+            }
 
         });
     });
