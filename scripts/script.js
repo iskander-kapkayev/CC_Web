@@ -225,7 +225,7 @@ if (window.location.href === `${webURL}/login.html`) {
             // redirect user based on signup attempt
             if (await signInUser(email, password)) {
                 console.log('user signed in');
-                console.log(sessionStorage.getItem('token'));
+                console.log(sessionStorage.getItem('usertoken'));
             } else {
                 console.log('this did not work!');
             }
