@@ -213,14 +213,14 @@ if (window.location.href === `${webURL}/login.html`) {
         const loginForm = document.getElementById('loginFormData');
 
         // event listeners below
-        loginForm.addEventListener('button', async function() {
+        loginForm.addEventListener('submit', async function() {
             
             event.preventDefault(); // prevents redirection
             const loginForm = document.getElementById('loginFormData');
             
             // access the desired input through the var we setup
-            const email = regForm.elements.email.value;
-            const password = regForm.elements.password.value;
+            const email = loginForm.elements.email.value;
+            const password = loginForm.elements.password.value;
         
             // redirect user based on signup attempt
             if (await signInUser(email, password)) {
