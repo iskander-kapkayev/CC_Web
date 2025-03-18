@@ -42,7 +42,7 @@ Below styles will reflect the navigation menu
   display: block;
   color: #000000;
   text-decoration: none;
-  padding: 1vw 1vw; /* 5px top/bottom, 80px left/right */
+  padding: 1vw 4vw; /* 5px top/bottom, 80px left/right */
 }
 
 .header-container nav ul li a:hover {
