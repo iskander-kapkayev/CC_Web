@@ -128,9 +128,9 @@ async function signUpCheckpost(thisUsername, thisEmail) {
 }
 
 // registers a new user
-async function signUpRegister(thisUsername, thisEmail, thisPassword) {
+async function signUpRegisterpost(thisUsername, thisEmail, thisPassword) {
     // first check that you can sign up
-    const uniqueUser = await signUpCheck(thisUsername, thisEmail);
+    const uniqueUser = await signUpCheckpost(thisUsername, thisEmail);
 
     if (uniqueUser) {
         const URL = `${servURL}/registerpost`;
@@ -196,7 +196,7 @@ if (window.location.href === `${webURL}/signup.html`) {
             const password = regForm.elements.passwordReg.value;
         
             // redirect user based on signup attempt
-            if (await signUpRegister(username, email, password)) {
+            if (await signUpRegisterpost(username, email, password)) {
                 window.location.href = webURL
             } else {
                 window.location.href = `${webURL}/signup.html`;
