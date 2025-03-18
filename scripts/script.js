@@ -6,12 +6,43 @@ const webURL = 'https://cc-web-iota.vercel.app';
 const servURL = 'https://cc-server-lake.vercel.app';
 
 /*
-Async function call to fetch http request
+Async function call to fetch http request.
+One will be for gets.
+One will be for posts.
 */
 
-async function fetchDBData (URL) {
-    let response = await fetch(URL);
-    let data = await response.json();
+async function getDBData (URL) {
+    const response = await fetch(URL);
+    const data = await response.json();
+    return data;
+}
+
+// we need a post without authorization to
+// sign up check, sign in user, register a user
+async function postNoAuth(URL, bodyData) {
+    const response = await fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',  // ensures the body is in JSON format
+        },
+        body: JSON.stringify(bodyData)  // stringifies the data to send in the body
+    });
+    const data = await response.json();
+    return data;
+}
+
+// we need a post with authorization to
+// write a caption, heart a caption
+async function postAuth(URL, bodyData, token) {
+    const response = await fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',  // set body format to json
+            'Authorization': `Bearer ${token}` // send authorization token
+        },
+        body: JSON.stringify(bodyData)  // stringifies the data to send in the body
+    });
+    const data = await response.json();
     return data;
 }
 
@@ -47,7 +78,7 @@ async function moveToImage() {
 
 async function assignImage() {
     let URL = `${servURL}/graballimages`;
-    let imageURLs = await fetchDBData(URL); // this will fetch data from http request to grab all images
+    let imageURLs = await getDBData(URL); // this will fetch data from http request to grab all images
     
     /*
     // we can now populate all urls into array
@@ -80,19 +111,31 @@ Grab form data to sign in or register.
 
 // checks for a username/email that already exists
 async function signUpCheck(username, email) {
-    let URL = `${servURL}/checkifexists?username=${username}&email=${email}`;
-    let signUpCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
+    const URL = `${servURL}/checkifexists?username=${username}&email=${email}`;
+    const signUpCheck = await getDBData(URL); // this will fetch a success or error for signing up
+    return (signUpCheck.message === 'Success');
+}
+
+// checks for a username/email that already exists
+async function signUpCheckpost(thisUsername, thisEmail) {
+    const URL = `${servURL}/checkifexistspost`;
+    const body = {
+        username: thisUsername,
+        email: thisEmail
+    };
+    const signUpCheck = await postNoAuth(URL, body); // this will fetch a success or error for signing up
     return (signUpCheck.message === 'Success');
 }
 
 // registers a new user
-async function signUpRegister(username, email, password) {
+async function signUpRegister(thisUsername, thisEmail, thisPassword) {
     // first check that you can sign up
-    const uniqueUser = await signUpCheck(username, email);
+    const uniqueUser = await signUpCheck(thisUsername, thisEmail);
 
     if (uniqueUser) {
-        let URL = `${servURL}/register?username=${username}&email=${email}&password=${password}`;
-        let regCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
+        const URL = `${servURL}/registerpost`;
+        const body = { username: thisUsername, email: thisEmail, password: thisPassword };
+        const regCheck = await postNoAuth(URL, body); // this will fetch a success or error for signing up
         return (regCheck.message === 'Success');
     } else {
         // if you can't sign up, then abort
@@ -102,17 +145,16 @@ async function signUpRegister(username, email, password) {
 
 // create a way to sign in as a regular user
 async function signInUser(email, password) {
-    let URL = `${servURL}/signin?email=${email}&password=${password}`;
-    let signInCheck = await fetchDBData(URL); // this will fetch a success or error for signing up
-    return (signInCheck.message === 'Success');
-
-    // if we adjust this to successfully return the username
-    if (signInCheck.message === 'Success') {
-        URL = `${servURL}/findusername?email=${email}`;
-        let usernameGrab = await fetchDBData(URL); // should return only 1 username
-        allowUser.push(usernameGrab[0]); // push username into global space
-    } else {
+    const URL = `${servURL}/signin?email=${email}&password=${password}`;
+    const signInCheck = await getDBData(URL); // this will fetch a token
+    if (signInCheck.message === 'Failure') {
+        // no token was created
         alert('Password or email combination did not work. Try again.')
+        return false;
+    } else {
+        // a user token was created and should be stored as a session
+        sessionStorage.setItem('usertoken', signInCheck.token);
+        return true;
     }
 }
 
@@ -220,8 +262,8 @@ function tester() {
 // this function will grab captions for current image
 async function collectCaptions() {
     // currentIndex + 1 will represent the imageID we are handling
-    let URL = `${servURL}/collectcaptions?imageid=${currentIndex+1}`;
-    let captions = await fetchDBData(URL);
+    const URL = `${servURL}/collectcaptions?imageid=${currentIndex+1}`;
+    const captions = await getDBData(URL);
     
     // display captions
     displayCaptions(captions);
@@ -232,8 +274,6 @@ This section is for adding captions.
 It connects with the image handler.
 Only approved captions will be displayed
 */
-
-const allowUser = [];
 
 // placeholder for comments at the moment
 function addCaption() {
