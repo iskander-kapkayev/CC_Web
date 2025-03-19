@@ -145,6 +145,7 @@ Below styles will reflect the user typing caption section
   display: flex;
   flex-direction: column; /* align items vertically */
 
+  padding: 5px;
   margin-top: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
