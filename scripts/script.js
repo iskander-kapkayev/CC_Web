@@ -150,7 +150,6 @@ async function signInUser(thisEmail, thisPassword) {
     const signInCheck = await postNoAuth(URL, body); // this will fetch a token
     if (signInCheck.message === 'Failure') {
         // no token was created
-        alert('Password or email combination did not work. Try again.')
         return false;
     } else {
         // a user token was created and should be stored as a session
