@@ -270,7 +270,13 @@ below starts styling for the sign up page
 below starts styling for toast messages
 */
 
-.toast{
+.notifications {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+}
+
+.toast {
   position: relative;
   padding: 10px;
   color: #fff;
@@ -287,7 +293,7 @@ below starts styling for toast messages
   animation: show 0.3s ease 1 forwards  
 }
 
-.toast i{
+.toast i {
   color: var(--color);
   display: flex;
   justify-content: center;
@@ -295,17 +301,17 @@ below starts styling for toast messages
   font-size: x-large;
 }
 
-.toast .title{
+.toast .title {
   font-size: x-large;
   font-weight: bold;
 }
 
-.toast span, .toast i:nth-child(3){
+.toast span, .toast i:nth-child(3) {
   color: #fff;
   opacity: 0.6;
 }
 
-@keyframes show{
+@keyframes show {
   0%{
       transform: translateX(100%);
   }
@@ -320,7 +326,7 @@ below starts styling for toast messages
   }
 }
 
-.toast::before{
+.toast::before {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -332,11 +338,11 @@ below starts styling for toast messages
   animation: timeOut 5s linear 1 forwards
 }
 
-@keyframes timeOut{
+@keyframes timeOut {
   to { width: 0; }
 }
 
-.toast.error{
+.toast.error {
   --color: #f24d4c;
   background-image: 
       linear-gradient(to right, #f24d4c55, #22242F 30%);

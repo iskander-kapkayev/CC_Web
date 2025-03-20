@@ -309,8 +309,9 @@ These will alert the users of success or error
 for various actions on the webpages
 */
 
-function createToast(type, icon, title, text){
-    let newToast = document.createElement('div');
+function createToast(type, icon, title, text) {
+    const notifications = document.querySelector('.notifications');
+    const newToast = document.createElement('div');
     newToast.innerHTML = `
         <div class="toast ${type}">
             <i class="${icon}"></i>
