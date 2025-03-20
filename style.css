@@ -279,6 +279,7 @@ below starts styling for toast messages
 .toast {
   position: relative;
   padding: 10px;
+  color: #ffffff;
   margin-bottom: 10px;
   width: 325px;
   display: grid;
@@ -306,7 +307,7 @@ below starts styling for toast messages
 }
 
 .toast span, .toast i:nth-child(3) {
-  color: #fff;
+  color: #ffffff;
   opacity: 0.6;
 }
 
