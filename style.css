@@ -279,16 +279,15 @@ below starts styling for toast messages
 .toast {
   position: relative;
   padding: 10px;
-  color: #fff;
   margin-bottom: 10px;
-  width: 250px;
+  width: 325px;
   display: grid;
   grid-template-columns: 70px 1fr 70px;
   border-radius: 5px;
   --color: #0abf30;
   background-image: 
       linear-gradient(
-          to right, #0abf3055, #22242f 30%
+          to right, #0abf319f, #6573bf 30%
       ); 
   animation: show 0.3s ease 1 forwards  
 }
@@ -312,18 +311,10 @@ below starts styling for toast messages
 }
 
 @keyframes show {
-  0%{
-      transform: translateX(100%);
-  }
-  40%{
-      transform: translateX(-5%);
-  }
-  80%{
-      transform: translateX(0%);
-  }
-  100%{
-      transform: translateX(-10%);
-  }
+  0% { transform: translateX(100%); }
+  40% { transform: translateX(-5%); }
+  80% { transform: translateX(0%); }
+  100% { transform: translateX(-10%); }
 }
 
 .toast::before {
@@ -345,5 +336,5 @@ below starts styling for toast messages
 .toast.error {
   --color: #f24d4c;
   background-image: 
-      linear-gradient(to right, #f24d4c55, #22242F 30%);
+      linear-gradient(to right, #ff0000, #222a58 30%);
 }
