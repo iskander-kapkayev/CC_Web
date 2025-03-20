@@ -281,7 +281,7 @@ below starts styling for toast messages
   padding: 10px;
   color: #fff;
   margin-bottom: 10px;
-  width: 400px;
+  width: 250px;
   display: grid;
   grid-template-columns: 70px 1fr 70px;
   border-radius: 5px;
