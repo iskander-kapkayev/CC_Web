@@ -226,8 +226,17 @@ if (window.location.href === `${webURL}/login.html`) {
             if (await signInUser(email, password)) {
                 console.log('user signed in');
                 console.log(sessionStorage.getItem('usertoken'));
+                const type = 'success';
+                const icon = 'fa-solid fa-circle-check';
+                const title = 'Success';
+                const text = 'You have logged in! You will be redirected to the main page.';
+                createToast(type, icon, title, text);
             } else {
-                console.log('this did not work!');
+                const type = 'error';
+                const icon = 'fa-solid fa-circle-exclamation';
+                const title = 'Error';
+                const text = 'Username or Password was incorrect.';
+                createToast(type, icon, title, text);
             }
 
         });
@@ -293,3 +302,43 @@ function addCaption() {
         alert('Your caption has been posted. If flagged, it will be removed.')
     }
 }
+
+/*
+This section is for toast messages.
+These will alert the users of success or error
+for various actions on the webpages
+*/
+
+function createToast(type, icon, title, text){
+    let newToast = document.createElement('div');
+    newToast.innerHTML = `
+        <div class="toast ${type}">
+            <i class="${icon}"></i>
+            <div class="content">
+                <div class="title">${title}</div>
+                <span>${text}</span>
+            </div>
+            <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
+        </div>`;
+    notifications.appendChild(newToast);
+    newToast.timeOut = setTimeout(
+        ()=>newToast.remove(), 5000
+    )
+}
+
+/* for reference when adjusting type, icon, title and text of toast
+success.onclick = function(){
+    let type = 'success';
+    let icon = 'fa-solid fa-circle-check';
+    let title = 'Success';
+    let text = 'This is a success toast.';
+    createToast(type, icon, title, text);
+}
+error.onclick = function(){
+    let type = 'error';
+    let icon = 'fa-solid fa-circle-exclamation';
+    let title = 'Error';
+    let text = 'This is a error toast.';
+    createToast(type, icon, title, text);
+}
+*/
