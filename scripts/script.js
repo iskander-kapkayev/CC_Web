@@ -3,7 +3,7 @@ Universal URL to access server
 */
 
 const webURL = 'https://cc-web-iota.vercel.app';
-const servURL = process.env.SERVURL;
+const servURL = process.env.SERV_URL;
 
 /*
 Async function call to fetch http request.
@@ -272,13 +272,23 @@ function displayCaptions(currentCaptions) {
                     <span id='postCaption'>${post.captiontext}</span>
                     <span id='postUser'> - ${post.username} </span>
                 </span>
-                <div id='postUpvotes'><a onclick='tester()'>&#x2764</a> ${post.votecount}</div>
+                <div id='postUpvotes'><a onclick='uservote()'>&#x2764</a> ${post.votecount}</div>
             `;
             postContainer.appendChild(postElement);
         });
     } catch (error) {
     console.error(error);
     }
+}
+
+// this function will grab captions for current image
+async function uservote() {
+    // currentIndex + 1 will represent the imageID we are handling
+    const URL = `${servURL}/upvotecaption`;
+    //const voted = await postAuth(URL, )
+    
+    // display captions
+    displayCaptions(captions);
 }
 
 // tester function
