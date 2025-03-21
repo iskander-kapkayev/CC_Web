@@ -272,7 +272,7 @@ function displayCaptions(currentCaptions) {
                     <span id='postCaption'>${post.captiontext}</span>
                     <span id='postUser'> - ${post.username} </span>
                 </span>
-                <div id='postUpvotes'><a onclick='uservote()'>&#x2764</a> ${post.votecount}</div>
+                <div id='postUpvotes'><a onclick='uservote(${post.captiontext}, ${post.username})'>&#x2764</a> ${post.votecount}</div>
             `;
             postContainer.appendChild(postElement);
         });
@@ -281,12 +281,31 @@ function displayCaptions(currentCaptions) {
     }
 }
 
-// this function will grab captions for current image
-async function uservote() {
-    // currentIndex + 1 will represent the imageID we are handling
+// this function upvote/downvote if user is logged in
+async function uservote(captionText, captionUser) {
+    // set up url and body for post request
     const URL = `${servURL}/upvotecaption`;
-    //const voted = await postAuth(URL, )
+    const body = {
+        captiontext: captionText, 
+        captionuser: captionUser
+    }; // body data 
     
+    // check for token
+    const thistoken = sessionStorage.getItem('userToken');
+    if (!thistoken) {
+        console.log('no token in session storage');
+    }
+    
+    // send body and token to server
+    const voted = await postAuth(URL, body, thistoken);
+    if (voted.message === 'Failure') {
+        // unable to upvote
+        console.log('unable to upvote');
+    } else {
+        // upvote was successful
+        console.log('upvote was successful');
+        console.log('re-run grab captions to see upvote change');
+    }
 }
 
 // tester function
