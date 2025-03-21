@@ -3,7 +3,7 @@ Universal URL to access server
 */
 
 const webURL = 'https://cc-web-iota.vercel.app';
-const servURL = 'https://cc-server-lake.vercel.app';
+const servURL = process.env.SERVURL;
 
 /*
 Async function call to fetch http request.
@@ -196,9 +196,22 @@ if (window.location.href === `${webURL}/signup.html`) {
         
             // redirect user based on signup attempt
             if (await signUpRegister(username, email, password)) {
-                window.location.href = webURL
+                const type = 'success';
+                const icon = 'fa-solid fa-circle-check';
+                const title = 'Success';
+                const text = 'You have registered! You will now be directed to the login page.';
+                createToast(type, icon, title, text);
+                
+                setTimeout(() => {
+                    window.location.href = `${webURL}/login.html`; // redirect to login
+                  }, 3000);
+                
             } else {
-                window.location.href = `${webURL}/signup.html`;
+                const type = 'error';
+                const icon = 'fa-solid fa-circle-exclamation';
+                const title = 'Error';
+                const text = 'Username or email is already registered. Try again or go login.';
+                createToast(type, icon, title, text);
             }
         });
 
@@ -223,8 +236,6 @@ if (window.location.href === `${webURL}/login.html`) {
         
             // redirect user based on signup attempt
             if (await signInUser(email, password)) {
-                console.log('user signed in');
-                console.log(sessionStorage.getItem('usertoken'));
                 const type = 'success';
                 const icon = 'fa-solid fa-circle-check';
                 const title = 'Success';
