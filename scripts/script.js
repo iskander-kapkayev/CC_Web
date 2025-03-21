@@ -3,7 +3,7 @@ Universal URL to access server
 */
 
 const webURL = 'https://cc-web-iota.vercel.app';
-const servURL = process.env.SERV_URL;
+const servURL = 'https://cc-server-lake.vercel.app';
 
 /*
 Async function call to fetch http request.
@@ -287,8 +287,6 @@ async function uservote() {
     const URL = `${servURL}/upvotecaption`;
     //const voted = await postAuth(URL, )
     
-    // display captions
-    displayCaptions(captions);
 }
 
 // tester function
