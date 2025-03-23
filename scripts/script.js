@@ -272,7 +272,7 @@ function displayCaptions(currentCaptions) {
                     <span id='postCaption'>${post.captiontext}</span>
                     <span id='postUser'> - ${post.username} </span>
                 </span>
-                <div id='postUpvotes'><a onclick=uservote(${post.captiontext}, ${post.username})>&#x2764</a> ${post.votecount}</div>
+                <div id='postUpvotes'><a onclick='uservote(post.captiontext, post.username)'>&#x2764</a> ${post.votecount}</div>
             `;
             postContainer.appendChild(postElement);
         });
