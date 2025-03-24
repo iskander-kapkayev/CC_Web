@@ -272,7 +272,7 @@ function displayCaptions(currentCaptions) {
                     <span id='postCaption'>${post.captiontext}</span>
                     <span id='postUser'> - ${post.username} </span>
                 </span>
-                <div id='postUpvotes'><a onclick='uservote(this.captiontext, this.username)'>&#x2764</a> ${post.votecount}</div>
+                <div data-info="This is some custom data" id='postUpvotes'><a onclick='uservote(this.data('data-info'))'>&#x2764</a> ${post.votecount}</div>
             `;
             postContainer.appendChild(postElement);
         });
@@ -282,7 +282,12 @@ function displayCaptions(currentCaptions) {
 }
 
 // this function upvote/downvote if user is logged in
-async function uservote(captionText, captionUser) {
+async function uservote(dataInfo) {
+    console.log(dataInfo);
+    return true;
+
+    const captionText = "";
+    const captionUser = "";
     // set up url and body for post request
     const URL = `${servURL}/upvotecaption`;
     const body = {
