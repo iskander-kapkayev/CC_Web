@@ -290,12 +290,9 @@ function displayCaptions(currentCaptions) {
 
 // this function upvote/downvote if user is logged in
 async function uservote(dataInfo) {
-    console.log(dataInfo);
-    console.log(typeof(dataInfo));
-    return true;
-
-    const captionText = dataInfo[0];
-    const captionUser = dataInfo[1];
+    
+    const captionText = dataInfo.captiontext; // grab from data
+    const captionUser = dataInfo.username; // grab from data
     // set up url and body for post request
     const URL = `${servURL}/upvotecaption`;
     const body = {
