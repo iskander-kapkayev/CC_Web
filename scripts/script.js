@@ -291,10 +291,9 @@ async function uservote(captionText, captionUser) {
     }; // body data 
     
     // check for token
-    let thistoken = sessionStorage.getItem('userToken');
-    thistoken = JSON.parse(thistoken);
+    let thistoken = sessionStorage.getItem('usertoken');
 
-    if (thistoken == null) {
+    if (!thistoken) {
         console.log('no token in session storage');
     }
     
