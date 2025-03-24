@@ -272,8 +272,8 @@ function displayCaptions(currentCaptions) {
                     <span id='postCaption'>${post.captiontext}</span>
                     <span id='postUser'> - ${post.username} </span>
                 </span>
-                <div data-info="[${post.captiontext}, ${post.username}]" id='postUpvotes'>
-                    <a onclick="uservote(this.closest('div').getAttribute('data-info'))">&#x2764</a> ${post.votecount}
+                <div data-info='{'data': [${post.captiontext}, ${post.username}]}' id='postUpvotes'>
+                    <a onclick='uservote(this.closest('div').getAttribute('data-info'))'>&#x2764</a> ${post.votecount}
                 </div>
             `;
             postContainer.appendChild(postElement);
@@ -285,6 +285,9 @@ function displayCaptions(currentCaptions) {
 
 // this function upvote/downvote if user is logged in
 async function uservote(dataInfo) {
+    console.log(dataInfo);
+    console.log(typeof(dataInfo));
+    return true;
 
     const captionText = dataInfo[0];
     const captionUser = dataInfo[1];
