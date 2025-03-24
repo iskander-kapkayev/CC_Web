@@ -301,7 +301,7 @@ async function uservote(dataInfo) {
     }; // body data 
     
     // check for token
-    let thistoken = sessionStorage.getItem('usertoken');
+    const thistoken = sessionStorage.getItem('usertoken');
 
     console.log(thistoken);
     console.log(captionText);
@@ -309,17 +309,23 @@ async function uservote(dataInfo) {
 
     if (!thistoken) {
         console.log('no token in session storage');
+        const type = 'error';
+        const icon = 'fa-solid fa-circle-exclamation';
+        const title = 'Error';
+        const text = 'Please login. User authorization not found.';
+        createToast(type, icon, title, text);
     }
     
     // send body and token to server
     const voted = await postAuth(URL, body, thistoken);
+    console.log(voted.message);
     if (voted.message === 'Failure') {
         // unable to upvote
-        console.log('unable to upvote');
+        //console.log('unable to upvote');
     } else {
         // upvote was successful
-        console.log('upvote was successful');
-        console.log('re-run grab captions to see upvote change');
+        //console.log('upvote was successful');
+        //console.log('re-run grab captions to see upvote change');
     }
 }
 
