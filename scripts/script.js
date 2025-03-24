@@ -322,7 +322,7 @@ async function uservote(dataInfo) {
         // upvote was successful
         console.log('upvote was successful');
         console.log('re-run grab captions to see upvote change');
-        displayCaptions(captions);
+        await collectCaptions();
     }
 }
 
