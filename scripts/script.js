@@ -272,7 +272,7 @@ function displayCaptions(currentCaptions) {
                     <span id='postCaption'>${post.captiontext}</span>
                     <span id='postUser'> - ${post.username} </span>
                 </span>
-                <div data-info='{'data': [${post.captiontext}, ${post.username}]}' id='postUpvotes'>
+                <div data-info='{"data": [${post.captiontext}, ${post.username}]}' id='postUpvotes'>
                     <a onclick='uservote(this.closest('div').getAttribute('data-info'))'>&#x2764</a> ${post.votecount}
                 </div>
             `;
