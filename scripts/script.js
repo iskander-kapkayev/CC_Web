@@ -293,6 +293,10 @@ async function uservote(captionText, captionUser) {
     // check for token
     let thistoken = sessionStorage.getItem('usertoken');
 
+    console.log(thistoken);
+    console.log(captionText);
+    console.log(captionUser);
+
     if (!thistoken) {
         console.log('no token in session storage');
     }
@@ -360,9 +364,7 @@ function createToast(type, icon, title, text) {
             <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
         </div>`;
     notifications.appendChild(newToast);
-    newToast.timeOut = setTimeout(
-        ()=>newToast.remove(), 5000
-    )
+    newToast.timeOut = setTimeout(()=>newToast.remove(), 5000);
 }
 
 /* for reference when adjusting type, icon, title and text of toast
