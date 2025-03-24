@@ -318,11 +318,21 @@ async function uservote(dataInfo) {
     if (voted.message === 'Failure') {
         // unable to upvote
         console.log('unable to upvote');
+        const type = 'error';
+        const icon = 'fa-solid fa-circle-exclamation';
+        const title = 'Error';
+        const text = 'Something scewed up on the server side...';
+        createToast(type, icon, title, text);
     } else {
         // upvote was successful
         console.log('upvote was successful');
         console.log('re-run grab captions to see upvote change');
         await collectCaptions();
+        const type = 'success';
+        const icon = 'fa-solid fa-circle-check';
+        const title = 'Success';
+        const text = 'Your vote has been counted!!';
+        createToast(type, icon, title, text);
     }
 }
 
