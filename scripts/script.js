@@ -303,10 +303,6 @@ async function uservote(dataInfo) {
     // check for token
     const thistoken = sessionStorage.getItem('usertoken');
 
-    console.log(thistoken);
-    console.log(captionText);
-    console.log(captionUser);
-
     if (!thistoken) {
         console.log('no token in session storage');
         const type = 'error';
@@ -318,14 +314,15 @@ async function uservote(dataInfo) {
     
     // send body and token to server
     const voted = await postAuth(URL, body, thistoken);
-    console.log(voted.message);
+    
     if (voted.message === 'Failure') {
         // unable to upvote
-        //console.log('unable to upvote');
+        console.log('unable to upvote');
     } else {
         // upvote was successful
-        //console.log('upvote was successful');
-        //console.log('re-run grab captions to see upvote change');
+        console.log('upvote was successful');
+        console.log('re-run grab captions to see upvote change');
+        displayCaptions(captions);
     }
 }
 
