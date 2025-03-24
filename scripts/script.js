@@ -266,14 +266,19 @@ function displayCaptions(currentCaptions) {
     try {
         currentCaptions.slice(0, 20).forEach(post => {
             const postElement = document.createElement('div');
+            const customData = {
+                captiontext: post.captiontext,
+                username: post.username,
+            };
+            const jsonData = JSON.stringify(customData); // for custome data-info
             postElement.className = 'post';
             postElement.innerHTML = `
                 <span id='captuser'>
                     <span id='postCaption'>${post.captiontext}</span>
                     <span id='postUser'> - ${post.username} </span>
                 </span>
-                <div data-info='{"data": [${post.captiontext}, ${post.username}]}' id='postUpvotes'>
-                    <a onclick='uservote(this.closest('div').getAttribute('data-info'))'>&#x2764</a> ${post.votecount}
+                <div data-info='${jsonData}' id='postUpvotes'>
+                    <a onclick='uservote(JSON.parse(this.closest('div').getAttribute('data-info')))'>&#x2764</a> ${post.votecount}
                 </div>
             `;
             postContainer.appendChild(postElement);
