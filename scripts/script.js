@@ -304,12 +304,13 @@ async function uservote(dataInfo) {
     const thistoken = sessionStorage.getItem('usertoken');
 
     if (!thistoken) {
-        console.log('no token in session storage');
+        console.log('No token found');
         const type = 'error';
         const icon = 'fa-solid fa-circle-exclamation';
         const title = 'Error';
         const text = 'Please login. User authorization not found.';
         createToast(type, icon, title, text);
+        return;
     }
     
     // send body and token to server
@@ -317,7 +318,7 @@ async function uservote(dataInfo) {
     
     if (voted.message === 'Failure') {
         // unable to upvote
-        console.log('unable to upvote');
+        console.log('Unable to upvote');
         const type = 'error';
         const icon = 'fa-solid fa-circle-exclamation';
         const title = 'Error';
