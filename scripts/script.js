@@ -98,8 +98,53 @@ async function assignImage() {
 
 // on start up of index.html
 if (window.location.href === `${webURL}/`) {
+    
     document.addEventListener('DOMContentLoaded', async function() {
+        
+        // grab images for display
         await assignImage();
+
+        // set reg and login forms
+        const captionForm = document.getElementById('captionFormData');
+
+        // event listeners below
+        captionForm.addEventListener('submit', async function() {
+            
+            event.preventDefault(); // prevents redirection
+            const captionForm = document.getElementById('registerFormData');
+            
+            // access the desired input through the var we setup
+            const captionText = captionForm.elements.caption.value;
+            
+            // perhaps add some caption text checks
+            if (!captionText) {
+                const type = 'error';
+                const icon = 'fa-solid fa-circle-exclamation';
+                const title = 'Error';
+                const text = 'Caption Text was left blank.';
+                createToast(type, icon, title, text);
+                return;
+            }
+
+            // send to add new caption function
+            if (await usercaption(captionText)) {
+                const type = 'success';
+                const icon = 'fa-solid fa-circle-check';
+                const title = 'Success';
+                const text = 'Caption added successfully!';
+                createToast(type, icon, title, text);
+                
+                console.log('re-run grab captions to see upvote change');
+                await collectCaptions(); // re-run caption grab
+            } else {
+                const type = 'error';
+                const icon = 'fa-solid fa-circle-exclamation';
+                const title = 'Error';
+                const text = 'Server side error. Please try again.';
+                createToast(type, icon, title, text);
+            }
+        });
+
     }); 
 }
 
@@ -359,13 +404,55 @@ It connects with the image handler.
 Only approved captions will be displayed
 */
 
-// placeholder for comments at the moment
-function addCaption() {
-    if (allowUser.length === 0){
-        alert('You are not logged in... login first!')
+// this function adds captions if user is logged in
+async function usercaption(captionText) {
+    
+    // grab data for captionText and imageID
+    const imageID = currentIndex + 1; // grab from currentIndex
+    
+    // set up url and body for post request
+    const URL = `${servURL}/addnewcaption`;
+    const body = {
+        captiontext: captionText, 
+        imageid: imageID
+    }; // body data 
+    
+    // check for token
+    const thistoken = sessionStorage.getItem('usertoken');
+
+    if (!thistoken) {
+        console.log('No token found');
+        const type = 'error';
+        const icon = 'fa-solid fa-circle-exclamation';
+        const title = 'Error';
+        const text = 'Please login. User authorization not found.';
+        createToast(type, icon, title, text);
+        return false;
+    }
+    
+    // send body and token to server
+    const addedCaption = await postAuth(URL, body, thistoken);
+    
+    if (addedCaption.message === 'Failure') {
+        // unable to upvote
+        console.log('Unable to add caption.');
+        const type = 'error';
+        const icon = 'fa-solid fa-circle-exclamation';
+        const title = 'Error';
+        const text = 'Something scewed up on the server side...';
+        createToast(type, icon, title, text);
+        return false;
     } else {
-        const captionText = document.getElementById('captionInput');
-        alert('Your caption has been posted. If flagged, it will be removed.')
+        // upvote was successful
+        console.log('adding caption was successful');
+        console.log('re-run grab captions to see changes');
+        await collectCaptions(); // re-run caption grabber
+        const type = 'success';
+        const icon = 'fa-solid fa-circle-check';
+        const title = 'Success';
+        const text = 'Your vote has been counted!!';
+        createToast(type, icon, title, text);
+        return true;
     }
 }
 

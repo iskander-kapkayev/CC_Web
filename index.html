@@ -32,24 +32,27 @@
     <!-- this div container will allow for nice centered boxy structure for image display -->
     <section class="image-container">
 
-        <!-- points to the anime images, with a button allowing to cycle through it -->
-        <img id="myImage" src="" alt="caption_images" />
+      <!-- points to the anime images, with a button allowing to cycle through it -->
+      <img id="myImage" src="" alt="caption_images" />
 
-        <!-- these are the buttons to move back and forth -->
-        <button onclick="moveToImage()">Next Image</button><br>
+      <!-- these are the buttons to move back and forth -->
+      <button onclick="moveToImage()">Next Image</button><br>
 
-        <!-- when one of these buttons are clicked, the comment section should also change -->
+      <!-- when one of these buttons are clicked, the comment section should also change -->
 
       <div id="post-container" class="post-container">
           <!-- captions will be dynamically loaded here -->
       </div>
 
-      <div class="caption-input">
-        <!-- for now, this is the comment section placeholder, where you can type -->
-        <textarea id="captionInput" placeholder="Write your caption here..."></textarea><br>
+      <!-- caption Form -->
+      <div class="form-container">
+        <h2>LOGIN</h2>
 
-        <!-- this is a submit button for comments -->
-        <button onclick="addCaption()">Submit</button>
+        <form id="captionFormData">
+          <input type="caption" id="caption" name="caption" placeholder="Type your caption here..." required>
+          <button type="submit" value="Submit">SUBMIT</button>
+        </form>
+        
       </div>
 
     </section>
