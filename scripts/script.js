@@ -291,10 +291,6 @@ if (window.location.href === `${webURL}/login.html`) {
                     window.location.href = `${webURL}`; // redirect to main page
                   }, 3000);
                 
-                // toggle caption form on
-                const cform = document.getElementById('captionform');
-                cform.style.display = flex;
-
             } else {
                 const type = 'error';
                 const icon = 'fa-solid fa-circle-exclamation';
@@ -555,3 +551,19 @@ error.onclick = function(){
     createToast(type, icon, title, text);
 }
 */
+
+/*
+Window onload for toggling login/non-login features
+*/
+
+// function to toggle caption form 
+
+// On page load, update the theme based on session storage
+window.onload = function() {
+    if (sessionStorage.getItem('usertoken')) {
+        const cform = document.getElementById('captionform');
+        cform.style.display = flex;
+    } else {
+        // do nothing
+    }
+};
