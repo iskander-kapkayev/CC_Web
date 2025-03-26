@@ -419,7 +419,7 @@ async function userdownvote(dataInfo) {
     const voted = await postAuth(URL, body, thistoken);
     
     if (voted.message === 'Failure') {
-        // unable to upvote
+        // unable to downvote
         console.log('Unable to upvote');
         const type = 'error';
         const icon = 'fa-solid fa-circle-exclamation';
@@ -428,7 +428,7 @@ async function userdownvote(dataInfo) {
         createToast(type, icon, title, text);
     } else {
         // upvote was successful
-        console.log('upvote was successful');
+        console.log('downvote was successful');
         console.log('re-run grab captions to see upvote change');
         await collectCaptions();
         const type = 'success';
