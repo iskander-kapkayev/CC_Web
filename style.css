@@ -268,7 +268,7 @@ below starts styling for the sign up page
 #captionform form {
   background: #FFFFFF;
   max-width: 360px;
-  margin: 0 auto 100px;
+  margin: 0;
   padding: 45px;
 }
 
@@ -277,7 +277,7 @@ below starts styling for the sign up page
   background: #e6e6e6;
   width: 100%;
   border: 0;
-  margin: 0 0 15px;
+  margin: 0;
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
