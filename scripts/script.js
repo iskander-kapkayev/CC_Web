@@ -395,7 +395,7 @@ async function userdownvote(dataInfo) {
     const captionText = dataInfo.captiontext; // grab from data
     const captionUser = dataInfo.username; // grab from data
     // set up url and body for post request
-    const URL = `${servURL}/upvotecaption`;
+    const URL = `${servURL}/votecaption`;
     const body = {
         captiontext: captionText, 
         captionuser: captionUser,
