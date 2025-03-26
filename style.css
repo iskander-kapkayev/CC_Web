@@ -270,14 +270,15 @@ below starts styling for the sign up page
   width: 65%;
 }
 
-#captionform h2 {
+#captionform h3 {
+  align-self: flex-start;
   margin-bottom: 5px;
 }
 
 #captionform form {
   background: #FFFFFF;
   margin: 0;
-  padding: 45px;
+  padding: 5px;
 }
 
 #captionform form input {
@@ -285,7 +286,7 @@ below starts styling for the sign up page
   background: #e6e6e6;
   border: 0;
   margin: 0;
-  padding: 15px;
+  padding: 5px;
   box-sizing: border-box;
   font-size: 14px;
 }
