@@ -323,8 +323,8 @@ function displayCaptions(currentCaptions) {
                     <span id='postUser'> - ${post.username} </span>
                 </span>
                 <div data-info='${jsonData}' id='postUpvotes'>
-                    <span id='upvoteheart'> <a onclick="uservote(JSON.parse(this.closest('div').getAttribute('data-info')))">&#128154</a> ${post.votecount} </span>
-                    <span id='downvoteheart'> <a onclick="uservote(JSON.parse(this.closest('div').getAttribute('data-info')))">&#128148</a></span>
+                    <span id='upvoteheart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))">&#128154</a> ${post.votecount} </span>
+                    <span id='downvoteheart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))">&#128148</a></span>
                 </div>
             `;
             postContainer.appendChild(postElement);
@@ -334,8 +334,58 @@ function displayCaptions(currentCaptions) {
     }
 }
 
-// this function upvote/downvote if user is logged in
-async function uservote(dataInfo) {
+// this function upvotes if user is logged in
+async function userupvote(dataInfo) {
+    
+    const captionText = dataInfo.captiontext; // grab from data
+    const captionUser = dataInfo.username; // grab from data
+    // set up url and body for post request
+    const URL = `${servURL}/votecaption`;
+    const body = {
+        captiontext: captionText, 
+        captionuser: captionUser,
+        type: 'upvote'
+    }; // body data 
+    
+    // check for token
+    const thistoken = sessionStorage.getItem('usertoken');
+
+    if (!thistoken) {
+        console.log('No token found');
+        const type = 'error';
+        const icon = 'fa-solid fa-circle-exclamation';
+        const title = 'Error';
+        const text = 'Please login. User authorization not found.';
+        createToast(type, icon, title, text);
+        return;
+    }
+    
+    // send body and token to server
+    const voted = await postAuth(URL, body, thistoken);
+    
+    if (voted.message === 'Failure') {
+        // unable to upvote
+        console.log('Unable to upvote');
+        const type = 'error';
+        const icon = 'fa-solid fa-circle-exclamation';
+        const title = 'Error';
+        const text = 'Something scewed up on the server side...';
+        createToast(type, icon, title, text);
+    } else {
+        // upvote was successful
+        console.log('upvote was successful');
+        console.log('re-run grab captions to see upvote change');
+        await collectCaptions();
+        const type = 'success';
+        const icon = 'fa-solid fa-circle-check';
+        const title = 'Success';
+        const text = 'Your vote has been counted!!';
+        createToast(type, icon, title, text);
+    }
+}
+
+// this function downvotes if user is logged in
+async function userdownvote(dataInfo) {
     
     const captionText = dataInfo.captiontext; // grab from data
     const captionUser = dataInfo.username; // grab from data
@@ -343,7 +393,8 @@ async function uservote(dataInfo) {
     const URL = `${servURL}/upvotecaption`;
     const body = {
         captiontext: captionText, 
-        captionuser: captionUser
+        captionuser: captionUser,
+        type: 'downvote'
     }; // body data 
     
     // check for token
