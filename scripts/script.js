@@ -286,6 +286,15 @@ if (window.location.href === `${webURL}/login.html`) {
                 const title = 'Success';
                 const text = 'You have logged in! You will be redirected to the main page.';
                 createToast(type, icon, title, text);
+                
+                setTimeout(() => {
+                    window.location.href = `${webURL}`; // redirect to main page
+                  }, 3000);
+                
+                // toggle caption form on
+                const cform = document.getElementById('captionform');
+                cform.style.display = flex;
+
             } else {
                 const type = 'error';
                 const icon = 'fa-solid fa-circle-exclamation';
