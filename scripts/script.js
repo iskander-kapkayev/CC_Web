@@ -562,7 +562,7 @@ Window onload for toggling login/non-login features
 window.onload = function() {
     if (sessionStorage.getItem('usertoken')) {
         const cform = document.getElementById('captionform');
-        cform.style.display = flex;
+        cform.style.display = 'flex';
     } else {
         // do nothing
     }
