@@ -237,43 +237,6 @@ below starts styling for the sign up page
   font-size: 14px;
 }
 
-#captionform {
-  display: flex;
-  flex-direction: column; /* align items vertically */
-  
-  margin-top: 10px;
-  padding: 5px;
-  padding-left: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #FFFFFF;
-}
-
-#captionform h2 {
-  text-align: left;
-  margin-bottom: 20px;
-}
-
-#captionform form {
-  position: relative;
-  background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-}
-
-#captionform form input {
-  outline: 0;
-  background: #e6e6e6;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
 .form-container form button {
   outline: 0;
   background: #33a741;
@@ -287,6 +250,37 @@ below starts styling for the sign up page
 .form-container form button:hover {
   background-color: #32a889;
   cursor: pointer;
+}
+
+#captionform {
+  display: flex;
+  flex-direction: column; /* align items vertically */
+  
+  margin-top: 10px;
+  padding: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  text-align: left;
+}
+
+#captionform form {
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+}
+
+#captionform form input {
+  outline: 0;
+  background: #e6e6e6;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
 #captionform button {
