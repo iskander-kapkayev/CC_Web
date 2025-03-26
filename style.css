@@ -33,7 +33,7 @@ Below styles will reflect the navigation menu
   margin-left: auto;
   margin-right: auto;
   width: 65%;
-  background: #81D8D0;
+  background: #FFFFFF;
   box-shadow: 0 2px 4px #0000001a;
   border-radius: 8px;
 }
@@ -52,7 +52,7 @@ Below styles will reflect the navigation menu
 
 .image-container {
   text-align: center;
-  background: #81D8D0;
+  background: #FFFFFF;
   padding: 10px;
   box-shadow: 0 2px 4px #0000001a;
   border-radius: 8px;
@@ -195,7 +195,7 @@ footer p {
   width: 65%;
   font-weight: bold;
 
-  background: #81D8D0;
+  background: #FFFFFF;
   box-shadow: 0 2px 4px #0000001a;
   border-radius: 8px;
   margin-left: auto;
