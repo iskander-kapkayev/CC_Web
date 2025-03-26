@@ -122,6 +122,7 @@ Below styles will reflect the caption section
 .post #postUpvotes {
   font-size: 20px;
   text-align: center;
+  vertical-align: auto;
   padding-right: 15px;
   align-self: flex-end;
   text-decoration: none;
