@@ -101,7 +101,7 @@ Below styles will reflect the caption section
   padding-left: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #c6bfbf;
+  background-color: #f9e2e2e8;
 }
 
 .post #captuser {
@@ -149,7 +149,7 @@ Below styles will reflect the user typing caption section
   margin-top: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #c6bfbf;
+  background-color: #f9e2e2e8;
 }
 
 .caption-input h2 {
@@ -227,7 +227,6 @@ below starts styling for the sign up page
 }
 
 .form-container form input {
-  font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -238,8 +237,33 @@ below starts styling for the sign up page
   font-size: 14px;
 }
 
+.form-container #captionform {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+.form-container #captionform form {
+  position: relative;
+  background: #f9e2e2e8;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+}
+
+.form-container #captionform form input {
+  outline: 0;
+  background: #f9e2e2e8;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
 .form-container form button {
-  font-family: "Roboto", sans-serif;
   outline: 0;
   background: #33a741;
   width: 100%;
