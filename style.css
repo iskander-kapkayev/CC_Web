@@ -270,6 +270,10 @@ below starts styling for the sign up page
   width: 65%;
 }
 
+#captionform h2 {
+  margin-bottom: 5px;
+}
+
 #captionform form {
   background: #FFFFFF;
   margin: 0;
@@ -279,7 +283,6 @@ below starts styling for the sign up page
 #captionform form input {
   outline: 0;
   background: #e6e6e6;
-  width: 100%;
   border: 0;
   margin: 0;
   padding: 15px;
