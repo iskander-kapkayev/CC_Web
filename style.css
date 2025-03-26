@@ -285,6 +285,7 @@ below starts styling for the sign up page
   padding: 5px 10px;
   border-radius: 8px;
   cursor: pointer;
+  width: auto;
 }
 
 #captionform button:hover {
