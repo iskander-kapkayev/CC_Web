@@ -243,6 +243,11 @@ below starts styling for the sign up page
   margin: 0;
 }
 
+#captionform h2 {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
 #captionform form {
   position: relative;
   background: #FFFFFF;
