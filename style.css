@@ -25,7 +25,7 @@ Below styles will reflect the navigation menu
 
 .header-container nav ul {
   list-style-type: none;
-  background-color: #81D8D0;
+  background-color: #FFFFFF;
   display: flex; /* use Flexbox to align items */
   justify-content: space-around; /* evenly space items */
   align-items: center; /* center items vertically */
@@ -54,7 +54,7 @@ Below styles will reflect the navigation menu
   text-align: center;
   background: #81D8D0;
   padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px #0000001a;
   border-radius: 8px;
   align-items: center;
   overflow: auto;
@@ -101,7 +101,7 @@ Below styles will reflect the caption section
   padding-left: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #81D8D0;
+  background-color: #FFFFFF;
 }
 
 .post #captuser {
@@ -149,7 +149,7 @@ Below styles will reflect the user typing caption section
   margin-top: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #81D8D0;
+  background-color: #FFFFFF;
 }
 
 .caption-input h2 {
