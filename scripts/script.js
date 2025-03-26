@@ -344,12 +344,13 @@ async function userupvote(dataInfo) {
     
     const captionText = dataInfo.captiontext; // grab from data
     const captionUser = dataInfo.username; // grab from data
+    const voteType = 'upvote';
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
     const body = {
         captiontext: captionText, 
         captionuser: captionUser,
-        type: 'upvote'
+        type: voteType
     }; // body data 
     
     // check for token
@@ -394,12 +395,13 @@ async function userdownvote(dataInfo) {
     
     const captionText = dataInfo.captiontext; // grab from data
     const captionUser = dataInfo.username; // grab from data
+    const voteType = 'downvote';
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
     const body = {
         captiontext: captionText, 
         captionuser: captionUser,
-        type: 'downvote'
+        type: voteType
     }; // body data 
     
     // check for token
