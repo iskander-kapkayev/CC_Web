@@ -135,6 +135,7 @@ Below styles will reflect the caption section
 .heart {
   font-size: 14px;
   text-align: center;
+  animation: pulse 3s infinite;
 }
 
 .votenum {
@@ -149,14 +150,6 @@ Below styles will reflect the caption section
   background-color: #32a889;
   border: 1px solid #ccc;
   border-radius: 8px;
-}
-
-#upvoteheart {
-  color: #ff1e00; /* Change upvote heart color to red */
-}
-
-#downvoteheart {
-  color: #002280; /* Change downvote heart color to green */
 }
 
 /*
