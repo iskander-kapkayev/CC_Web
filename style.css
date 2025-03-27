@@ -149,7 +149,7 @@ Below styles will reflect the caption section
   padding-top: 3px;
   padding-left: 3px;
   padding-right: 3px;
-  border-radius: 3px;
+  border-radius: 50% 20% / 10% 40%;
   cursor: pointer;
   color: #ffffff;
   background-color: #32a889;
@@ -159,7 +159,7 @@ Below styles will reflect the caption section
   padding-top: 3px;
   padding-left: 3px;
   padding-right: 3px;
-  border-radius: 3px;
+  border-radius: 50% 20% / 10% 40%;
   cursor: pointer;
   color: #ffffff;
   background-color: #ec2d57;
