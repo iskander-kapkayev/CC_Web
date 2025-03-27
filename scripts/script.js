@@ -377,15 +377,23 @@ async function userupvote(dataInfo) {
         const title = 'Error';
         const text = 'Something scewed up on the server side...';
         createToast(type, icon, title, text);
-    } else {
-        // upvote was successful
-        console.log('upvote was successful');
-        console.log('re-run grab captions to see upvote change');
+    } else if (voted.message === 'Added') {
+        // upvote was added successful
+        console.log('upvote was successfully added');
         await collectCaptions();
         const type = 'success';
         const icon = 'fa-solid fa-circle-check';
         const title = 'Success';
         const text = 'Your vote has been counted!!';
+        createToast(type, icon, title, text);
+    } else if (voted.message === 'Removed') {
+        // upvote was removed successfully
+        console.log('upvote was rescinded');
+        await collectCaptions();
+        const type = 'success';
+        const icon = 'fa-solid fa-circle-check';
+        const title = 'Success';
+        const text = 'Your vote was rescinded.';
         createToast(type, icon, title, text);
     }
 }
@@ -428,15 +436,23 @@ async function userdownvote(dataInfo) {
         const title = 'Error';
         const text = 'Something scewed up on the server side...';
         createToast(type, icon, title, text);
-    } else {
-        // upvote was successful
-        console.log('downvote was successful');
-        console.log('re-run grab captions to see upvote change');
+    } else if (voted.message === 'Added') {
+        // upvote was added successful
+        console.log('downvote was successfully added');
         await collectCaptions();
         const type = 'success';
         const icon = 'fa-solid fa-circle-check';
         const title = 'Success';
         const text = 'Your vote has been counted!!';
+        createToast(type, icon, title, text);
+    } else if (voted.message === 'Removed') {
+        // upvote was removed successfully
+        console.log('downvote was rescinded');
+        await collectCaptions();
+        const type = 'success';
+        const icon = 'fa-solid fa-circle-check';
+        const title = 'Success';
+        const text = 'Your vote was rescinded.';
         createToast(type, icon, title, text);
     }
 }
