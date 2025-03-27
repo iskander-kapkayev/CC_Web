@@ -135,7 +135,9 @@ Below styles will reflect the caption section
   font-size: 14px;
   text-align: center;
   border-radius: 14px;
-  padding-top: 5px;
+  padding-top: 6px;
+  padding-left: 3px;
+  padding-right: 3px;
   transition: background-color 0.3s ease; 
 }
 
