@@ -135,12 +135,13 @@ Below styles will reflect the caption section
   font-size: 14px;
   text-align: center;
   padding: 5px;
-  border-radius: 50px;
+  border-radius: 14px;
   transition: background-color 0.3s ease; 
 }
 
 .votenum {
   font-size: 14px; /* size of the number */
+  font-weight: bold;
   text-align: center;
   width: 50px; /* fixed width, preventing size impact on layout */
 }
