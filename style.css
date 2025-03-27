@@ -151,11 +151,11 @@ Below styles will reflect the caption section
   border-radius: 8px;
 }
 
-#upvoteheart i {
+#upvoteheart {
   color: #ff1e00; /* Change upvote heart color to red */
 }
 
-#downvoteheart i {
+#downvoteheart {
   color: #002280; /* Change downvote heart color to green */
 }
 
