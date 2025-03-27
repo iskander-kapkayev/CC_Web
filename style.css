@@ -147,16 +147,14 @@ Below styles will reflect the caption section
 
 #upvoteheart:hover {
   padding: 3px;
-  border-radius: 25% 10%;
+  border-radius: 10% 25%;
   cursor: pointer;
   color: #ffffff;
   background-color: #32a889;
 }
 
 #downvoteheart:hover {
-  padding-top: 3px;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding: 3px;
   border-radius: 25% 10%;
   cursor: pointer;
   color: #ffffff;
