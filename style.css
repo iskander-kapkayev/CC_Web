@@ -120,13 +120,27 @@ Below styles will reflect the caption section
 }
 
 .post #postUpvotes {
-  font-size: 20px;
-  text-align: center;
   padding-right: 15px;
   align-self: flex-end;
   text-decoration: none;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.post #postUpvotes #heart {
+  font-size: 20px;
+}
+
+.post #postUpvotes #votenum {
+  font-size: 20px; /* size of the number */
+  text-align: center;
+  width: 50px; /* fixed width for number, preventing its size from impacting layout */
+  display: inline-block;
+  text-align: center;
 }
 
 .post #postUpvotes a:hover {

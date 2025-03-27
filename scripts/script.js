@@ -328,8 +328,9 @@ function displayCaptions(currentCaptions) {
                     <span id='postUser'> - ${post.username} </span>
                 </span>
                 <div data-info='${jsonData}' id='postUpvotes'>
-                    <span id='upvoteheart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))">&#128154</a> ${post.votecount} </span>
-                    <span id='downvoteheart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))">&#128148</a></span>
+                    <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))">&#128154</a></span>
+                    <span class='votenum'>${post.votecount}</span>
+                    <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))">&#128148</a></span>
                 </div>
             `;
             postContainer.appendChild(postElement);
