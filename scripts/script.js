@@ -111,7 +111,7 @@ if (window.location.href === `${webURL}/`) {
         captionForm.addEventListener('submit', async function() {
             
             event.preventDefault(); // prevents redirection
-            const captionForm = document.getElementById('registerFormData');
+            const captionForm = document.getElementById('captionFormData');
             
             // access the desired input through the var we setup
             const captionText = captionForm.elements.caption.value;
