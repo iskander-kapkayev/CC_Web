@@ -138,7 +138,7 @@ Below styles will reflect the caption section
 }
 
 .votenum {
-  font-size: 12.5px; /* size of the number */
+  font-size: 14px; /* size of the number */
   text-align: center;
   width: 50px; /* fixed width, preventing size impact on layout */
 }
@@ -149,6 +149,14 @@ Below styles will reflect the caption section
   background-color: #32a889;
   border: 1px solid #ccc;
   border-radius: 8px;
+}
+
+#upvoteheart i {
+  color: #ff1e00; /* Change upvote heart color to red */
+}
+
+#downvoteheart i {
+  color: #002280; /* Change downvote heart color to green */
 }
 
 /*
