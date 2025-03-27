@@ -317,7 +317,7 @@ below starts styling for the sign up page
   padding: 5px;
   box-sizing: border-box;
   font-size: 14px;
-  width: auto;
+  width: 100%;
 }
 
 #captionform button {
@@ -327,7 +327,6 @@ below starts styling for the sign up page
   padding: 5px 10px;
   border-radius: 8px;
   cursor: pointer;
-  width: auto;
   align-self: flex-middle;
 }
 
