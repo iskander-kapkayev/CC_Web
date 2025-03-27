@@ -145,12 +145,10 @@ Below styles will reflect the caption section
   width: 50px; /* fixed width, preventing size impact on layout */
 }
 
-.post #postUpvotes a:hover {
+.heart:hover {
   cursor: pointer;
   color: #ffffff;
   background-color: #32a889;
-  border: 1px solid #ccc;
-  border-radius: 150px;
 }
 
 .material-symbols-outlined {
