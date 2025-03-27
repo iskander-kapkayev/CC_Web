@@ -580,7 +580,9 @@ Window onload for toggling login/non-login features
 // On page load, update the theme based on session storage
 window.onload = function() {
     if (sessionStorage.getItem('usertoken')) {
-        const cform = document.getElementById('captionform');
+        let cform = document.getElementById('captionform');
+        cform.style.display = 'flex';
+        cform = document.getElementById('captionformheader');
         cform.style.display = 'flex';
     } else {
         // do nothing
