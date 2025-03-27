@@ -19,6 +19,10 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  text-align: left;
+}
+
 /*
 Below styles will reflect the navigation menu
 */
@@ -74,7 +78,7 @@ Below styles will reflect the navigation menu
 }
 
 .image-container button:hover {
-background-color: #32a889;
+  background-color: #32a889;
 }
 
 #myImage {
@@ -171,54 +175,8 @@ Below styles will reflect the caption section
 
 
 /*
-Below styles will reflect the user typing caption section
+Below styles will reflect the footer section
 */
-
-.caption-input {
-  display: flex;
-  flex-direction: column; /* align items vertically */
-
-  padding: 5px;
-  margin-top: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #FFFFFF;
-}
-
-.caption-input h2 {
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-.caption-input textarea {
-  
-  height: 100px;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  resize: none;
-
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  min-width: 90%;
-  width: 90%;
-}
-
-.caption-input button {
-  background-color: #33a741;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  
-}
-
-.caption-input button:hover {
-  background-color: #32a889;
-}
 
 footer p {
   color: black;
