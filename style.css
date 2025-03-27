@@ -125,7 +125,6 @@ Below styles will reflect the caption section
   align-self: flex-end;
   text-decoration: none;
   border-radius: 8px;
-  transition: background-color 0.3s ease;
 
   align-items: center;
   justify-content: space-between;
@@ -135,7 +134,9 @@ Below styles will reflect the caption section
 .heart {
   font-size: 14px;
   text-align: center;
-  
+  padding: 5px;
+  border-radius: 150px;
+  transition: background-color 0.3s ease; 
 }
 
 .votenum {
