@@ -16,12 +16,15 @@ body {
 }
 
 h1 {
+  font-family: Lato, sans-serif;
   text-align: center;
+  font-size: 30px;
 }
 
 h2 {
+  font-family: Lato, sans-serif;
   text-align: left;
-  font-size: 80%;
+  font-size: 22px;
 }
 
 /*
