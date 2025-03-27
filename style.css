@@ -317,7 +317,6 @@ below starts styling for the sign up page
   padding: 5px;
   box-sizing: border-box;
   font-size: 14px;
-  
 }
 
 #captionform button {
@@ -331,7 +330,7 @@ below starts styling for the sign up page
 }
 
 #captionform button:hover {
-background-color: #32a889;
+  background-color: #32a889;
 }
 
 .link {
