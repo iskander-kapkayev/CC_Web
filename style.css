@@ -153,12 +153,11 @@ Below styles will reflect the caption section
 }
 
 .material-symbols-outlined {
-  animation: pulse 3s infinite;
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
   'GRAD' 0,
-  'opsz' 24
+  'opsz' 20
 }
 
 
