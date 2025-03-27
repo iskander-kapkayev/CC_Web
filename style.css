@@ -288,7 +288,7 @@ below starts styling for the sign up page
 #captionform {
   display: flex;
   flex-direction: column; /* align items vertically */
-  width: auto;
+  
   margin: 5px 0 5px 0;
   padding: 5px;
   padding-left: 15px;
