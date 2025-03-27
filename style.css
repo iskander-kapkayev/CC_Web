@@ -146,7 +146,6 @@ Below styles will reflect the caption section
 }
 
 #upvoteheart:hover {
-  padding-top: 6px;
   padding-left: 3px;
   padding-right: 3px;
   border-radius: 5px;
@@ -156,7 +155,6 @@ Below styles will reflect the caption section
 }
 
 #downvoteheart:hover {
-  padding-top: 6px;
   padding-left: 3px;
   padding-right: 3px;
   border-radius: 5px;
