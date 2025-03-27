@@ -148,10 +148,16 @@ Below styles will reflect the caption section
   width: 50px; /* fixed width, preventing size impact on layout */
 }
 
-.heart:hover {
+#upvoteheart:hover {
   cursor: pointer;
   color: #ffffff;
   background-color: #32a889;
+}
+
+#downvoteheart:hover {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #ec2d57;
 }
 
 .material-symbols-outlined {
