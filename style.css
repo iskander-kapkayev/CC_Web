@@ -135,7 +135,7 @@ Below styles will reflect the caption section
 .heart {
   font-size: 14px;
   text-align: center;
-  animation: pulse 3s infinite;
+  
 }
 
 .votenum {
@@ -149,10 +149,11 @@ Below styles will reflect the caption section
   color: #ffffff;
   background-color: #32a889;
   border: 1px solid #ccc;
-  border-radius: 16px;
+  border-radius: auto;
 }
 
 .material-symbols-outlined {
+  animation: pulse 3s infinite;
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
