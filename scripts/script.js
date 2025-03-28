@@ -114,7 +114,7 @@ if (window.location.href === `${webURL}/`) {
             const captionForm = document.getElementById('captionFormData');
             
             // access the desired input through the var we setup
-            const captionText = captionForm.elements.caption.value;
+            let captionText = captionForm.elements.caption.value;
 
             // Replace single quotes with HTML entity &apos;
             captionText = captionText.replace(/'/g, '&apos;');
