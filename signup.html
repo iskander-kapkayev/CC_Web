@@ -21,9 +21,9 @@
     <h2>REGISTER</h2>
 
     <form id="registerFormData">
-      <input type="text" id="usernameReg" name="usernameReg" placeholder='username' required>
+      <input type="text" id="usernameReg" name="usernameReg" placeholder='username' required pattern="[A-Za-z0-9._-]+">
       <input type="email" id="emailReg" name="emailReg" placeholder='email' required>
-      <input type="password" id="passwordReg" name="passwordReg" placeholder='password' required>
+      <input type="password" id="passwordReg" name="passwordReg" placeholder='password' required minlength="8">
       <button type="submit" value="Submit">SUBMIT</button>
     </form>
 
