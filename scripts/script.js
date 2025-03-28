@@ -351,7 +351,7 @@ function displayCaptions(currentCaptions) {
 
 // Escape function to ensure the JSON string is safe to use inside HTML
 function escapeJson(json) {
-    return json.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    return json.replace(/\\/g, '\\\\');
 }
 
 // this function upvotes if user is logged in
