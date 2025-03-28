@@ -115,6 +115,12 @@ if (window.location.href === `${webURL}/`) {
             
             // access the desired input through the var we setup
             const captionText = captionForm.elements.caption.value;
+
+            // Replace single quotes with HTML entity &apos;
+            captionText = captionText.replace(/'/g, '&apos;');
+
+            // Replace double quotes with HTML entity &quot;
+            captionText = captionText.replace(/"/g, '&quot;');
             
             // perhaps add some caption text checks
             if (!captionText) {
