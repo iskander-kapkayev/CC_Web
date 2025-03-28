@@ -317,8 +317,9 @@ function displayCaptions(currentCaptions) {
     try {
         currentCaptions.slice(0, 20).forEach(post => {
             const postElement = document.createElement('div');
+            const stringifyText = JSON.stringify(post.captiontext);
             const customData = {
-                captiontext: post.captiontext,
+                captiontext: stringifyText,
                 username: post.username,
             };
             const jsonData = JSON.stringify(customData); // for custome data-info
@@ -329,9 +330,9 @@ function displayCaptions(currentCaptions) {
                     <span id='postUser'> - ${post.username} </span>
                 </span>
                 <div data-info='${jsonData}' id='postUpvotes'>
-                    <span class='heart'> <a onclick="userdownvote(this.closest('div').getAttribute('data-info'))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
+                    <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
                     <span class='votenum'>${post.votecount}</span>
-                    <span class='heart'> <a onclick="userupvote(this.closest('div').getAttribute('data-info'))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>
+                    <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>
                     
                 </div>
             `;
@@ -345,9 +346,8 @@ function displayCaptions(currentCaptions) {
 // this function upvotes if user is logged in
 async function userupvote(dataInfo) {
     
-    const dataInfoParsed = JSON.parse(dataInfo); // parse json
-    const captionText = JSON.stringify(dataInfoParsed.captiontext); // grab from data
-    const captionUser = dataInfoParsed.username; // grab from data
+    const captionText = dataInfo.captiontext; // grab from data
+    const captionUser = dataInfo.username; // grab from data
     const voteType = 'upvote';
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
@@ -405,9 +405,8 @@ async function userupvote(dataInfo) {
 // this function downvotes if user is logged in
 async function userdownvote(dataInfo) {
     
-    const dataInfoParsed = JSON.parse(dataInfo);
-    const captionText = JSON.stringify(dataInfoParsed.captiontext); // grab from data
-    const captionUser = dataInfoParsed.username; // grab from data
+    const captionText = dataInfo.captiontext; // grab from data
+    const captionUser = dataInfo.username; // grab from data
     const voteType = 'downvote';
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
