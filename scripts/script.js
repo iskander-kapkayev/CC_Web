@@ -114,20 +114,15 @@ if (window.location.href === `${webURL}/`) {
             const captionForm = document.getElementById('captionFormData');
             
             // access the desired input through the var we setup
-            let captionText = captionForm.elements.caption.value;
-
-            // Replace single quotes with HTML entity &apos;
-            captionText = captionText.replace(/'/g, '&apos;');
-
-            // Replace double quotes with HTML entity &quot;
-            captionText = captionText.replace(/"/g, '&quot;');
+            // json stringify should 'clean' it up
+            const captionText = JSON.stringify(captionForm.elements.caption.value);
             
             // perhaps add some caption text checks
             if (!captionText) {
                 const type = 'error';
                 const icon = 'fa-solid fa-circle-exclamation';
                 const title = 'Error';
-                const text = 'Caption Text was left blank.';
+                const text = 'Caption text was left blank.';
                 createToast(type, icon, title, text);
                 return;
             }
@@ -323,7 +318,7 @@ function displayCaptions(currentCaptions) {
         currentCaptions.slice(0, 20).forEach(post => {
             const postElement = document.createElement('div');
             const customData = {
-                captiontext: post.captiontext,
+                captiontext: JSON.stringify(post.captiontext),
                 username: post.username,
             };
             const jsonData = JSON.stringify(customData); // for custome data-info
@@ -533,7 +528,7 @@ async function usercaption(captionText) {
         const type = 'success';
         const icon = 'fa-solid fa-circle-check';
         const title = 'Success';
-        const text = 'Your vote has been counted!!';
+        const text = 'Your caption was added!!';
         createToast(type, icon, title, text);
         return true;
     }
