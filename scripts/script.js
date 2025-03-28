@@ -317,9 +317,9 @@ function displayCaptions(currentCaptions) {
     try {
         currentCaptions.slice(0, 20).forEach(post => {
             const postElement = document.createElement('div');
-            const stringifyText = JSON.stringify(post.captiontext);
+            //const stringifyText = JSON.stringify(post.captiontext);
             const customData = {
-                captiontext: stringifyText,
+                captiontext: post.captiontext,
                 username: post.username,
             };
             const jsonData = JSON.stringify(customData); // for custome data-info
@@ -339,7 +339,7 @@ function displayCaptions(currentCaptions) {
             postContainer.appendChild(postElement);
         });
     } catch (error) {
-    console.error(error);
+        console.error(error);
     }
 }
 
