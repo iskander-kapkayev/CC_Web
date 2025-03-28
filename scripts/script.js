@@ -333,7 +333,7 @@ function displayCaptions(currentCaptions) {
                     <span id='postCaption'>${post.captiontext}</span>
                     <span id='postUser'> - ${post.username} </span>
                 </span>
-                <div data-info='${jsonData}' id='postUpvotes'>
+                <div data-info='${escapeJson(jsonData)}' id='postUpvotes'>
                     <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
                     <span class='votenum'>${post.votecount}</span>
                     <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>
@@ -345,6 +345,11 @@ function displayCaptions(currentCaptions) {
     } catch (error) {
         console.error(error);
     }
+}
+
+// Escape function to ensure the JSON string is safe to use inside HTML
+function escapeJson(json) {
+    return json.replace(/'/g, "\\'").replace(/"/g, "&quot;");
 }
 
 // this function upvotes if user is logged in
