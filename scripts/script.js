@@ -318,8 +318,12 @@ function displayCaptions(currentCaptions) {
         currentCaptions.slice(0, 20).forEach(post => {
             const postElement = document.createElement('div');
             //const stringifyText = JSON.stringify(post.captiontext);
+            let fixedText = post.captiontext
+                .replace(/\\/g, '\\\\')  // Escape backslashes
+                .replace(/'/g, "\\'")    // Escape single quotes
+                .replace(/"/g, '\\"');   // Escape double quotes
             const customData = {
-                captiontext: post.captiontext,
+                captiontext: fixedText,
                 username: post.username,
             };
             const jsonData = JSON.stringify(customData); // for custome data-info
