@@ -87,7 +87,16 @@ async function moveToImagePrev() {
     const storedArrayString = sessionStorage.getItem('imageURLs');
     const storedArray = JSON.parse(storedArrayString);
 
-    currentIndex = (currentIndex - 1) % storedArray.length;
+    currentIndex = (currentIndex - 1); // subtract by 1
+    if (currentIndex < 0) {
+        // if currentIndex is now -1
+        // cycle back to the max.length of images
+        const maxImages = 5;
+        currentIndex = maxImages;
+    } else {
+        // currentInfex is not -1
+        currentIndex = (currentIndex) % storedArray.length;
+    }
     img.src = storedArray[currentIndex];
     img.alt = `index ${currentIndex}`;
 
