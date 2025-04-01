@@ -628,7 +628,7 @@ window.onload = function() {
         cform = document.getElementById('captionformheader');
         cform.style.display = 'flex';
         cform = document.getElementById('loginChange');
-        cform.innerHTML = `<a href="./login.html">Welcome!</a>`; // change what is shown
+        cform.innerHTML = `<a href="#">Welcome!</a>`; // change what is shown
 
     } else {
         // do nothing
