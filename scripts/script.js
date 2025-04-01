@@ -126,7 +126,11 @@ async function assignImage() {
     */
 
     sessionStorage.setItem('imageURLs', JSON.stringify(imageURLs));
-    localStorage.setItem('currentIndex', 0); // initialize currentIndex at 0
+    if (!localStorage.getItem('currentIndex')) {
+        localStorage.setItem('currentIndex', 0); // initialize currentIndex at 0
+    } else {
+        // no need to initialize currentIndex, since it already exists
+    }
 
     // set the first image on start up
     let img = document.getElementById('myImage');
