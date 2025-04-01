@@ -628,9 +628,25 @@ window.onload = function() {
         cform = document.getElementById('captionformheader');
         cform.style.display = 'flex';
         cform = document.getElementById('loginChange');
-        cform.innerHTML = `<a href="#">Welcome!</a>`; // change what is shown
+        cform.innerHTML = `<a onclick="signoutUser()">Sign Out</a>`; // change what is shown
 
     } else {
         // do nothing
     }
 };
+
+// function to delete usertoken and sign out user
+function signoutUser() {
+    sessionStorage.removeItem('usertoken'); // remove token
+    
+    const type = 'success';
+    const icon = 'fa-solid fa-circle-check';
+    const title = 'Success';
+    const text = 'You have been signed out.';
+
+    createToast(type, icon, title, text); // display to user
+
+    setTimeout(() => {
+        window.location.href = `${webURL}`; // redirect to main page
+      }, 1500);
+}
