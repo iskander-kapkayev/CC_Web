@@ -68,7 +68,7 @@ async function moveToImageNext() {
     const storedArrayString = sessionStorage.getItem('imageURLs');
     const storedArray = JSON.parse(storedArrayString);
     
-    let currentIndex = sessionStorage.getItem('currentIndex');
+    let currentIndex = Number(sessionStorage.getItem('currentIndex'));
 
     currentIndex = (currentIndex + 1) % storedArray.length;
     img.src = storedArray[currentIndex];
@@ -92,7 +92,7 @@ async function moveToImagePrev() {
     const storedArrayString = sessionStorage.getItem('imageURLs');
     const storedArray = JSON.parse(storedArrayString);
 
-    let currentIndex = sessionStorage.getItem('currentIndex');
+    let currentIndex = Number(sessionStorage.getItem('currentIndex'));
     
     currentIndex = (currentIndex - 1); // subtract by 1
     if (currentIndex < 0) {
@@ -130,7 +130,7 @@ async function assignImage() {
 
     // set the first image on start up
     let img = document.getElementById('myImage');
-    const currentIndex = sessionStorage.getItem('currentIndex');
+    const currentIndex = Number(sessionStorage.getItem('currentIndex'));
     img.src = imageURLs[currentIndex];
     img.alt = `index ${currentIndex}`;
     await collectCaptions();
@@ -521,7 +521,7 @@ function tester() {
 // this function will grab captions for current image
 async function collectCaptions() {
     // currentIndex + 1 will represent the imageID we are handling
-    const currentIndex = sessionStorage.getItem('currentIndex');
+    const currentIndex = Number(sessionStorage.getItem('currentIndex'));
     const URL = `${servURL}/collectcaptions?imageid=${currentIndex+1}`;
     const captions = await getDBData(URL);
     
@@ -539,7 +539,7 @@ Only approved captions will be displayed
 async function usercaption(captionText) {
     
     // grab data for captionText and imageID
-    const currentIndex = sessionStorage.getItem('currentIndex');
+    const currentIndex = Number(sessionStorage.getItem('currentIndex'));
     const imageID = currentIndex + 1; // grab from currentIndex
     
     // set up url and body for post request
