@@ -54,7 +54,8 @@ adjusted from localhost to vercel (which now hosts the server connection!)
 */
 
 // create a way to cycle through the caption contest images (let's add more anime images!)
-let currentIndex = 0;
+// let currentIndex = 0;
+
 
 async function moveToImageNext() {
     /*
@@ -66,10 +67,14 @@ async function moveToImageNext() {
     // Retrieving an array
     const storedArrayString = sessionStorage.getItem('imageURLs');
     const storedArray = JSON.parse(storedArrayString);
+    
+    const currentIndex = sessionStorage.getItem('currentIndex');
 
     currentIndex = (currentIndex + 1) % storedArray.length;
     img.src = storedArray[currentIndex];
     img.alt = `index ${currentIndex}`;
+
+    sessionStorage.setItem('currentIndex', currentIndex); // set new currentIndex
 
     // once an image is changed, then the currentIndex 
     // is changed and captions need to be grabbed
@@ -87,6 +92,8 @@ async function moveToImagePrev() {
     const storedArrayString = sessionStorage.getItem('imageURLs');
     const storedArray = JSON.parse(storedArrayString);
 
+    const currentIndex = sessionStorage.getItem('currentIndex');
+    
     currentIndex = (currentIndex - 1); // subtract by 1
     if (currentIndex < 0) {
         // if currentIndex is now -1
@@ -99,6 +106,8 @@ async function moveToImagePrev() {
     }
     img.src = storedArray[currentIndex];
     img.alt = `index ${currentIndex}`;
+
+    sessionStorage.setItem('currentIndex', currentIndex); // set new currentIndex
 
     // once an image is changed, then the currentIndex 
     // is changed and captions need to be grabbed
@@ -117,9 +126,11 @@ async function assignImage() {
     */
 
     sessionStorage.setItem('imageURLs', JSON.stringify(imageURLs));
+    sessionStorage.setItem('currentIndex', 0); // initialize currentIndex at 0
 
     // set the first image on start up
     let img = document.getElementById('myImage');
+    const currentIndex = sessionStorage.getItem('currentIndex');
     img.src = imageURLs[currentIndex];
     img.alt = `index ${currentIndex}`;
     await collectCaptions();
@@ -510,6 +521,7 @@ function tester() {
 // this function will grab captions for current image
 async function collectCaptions() {
     // currentIndex + 1 will represent the imageID we are handling
+    const currentIndex = sessionStorage.getItem('currentIndex');
     const URL = `${servURL}/collectcaptions?imageid=${currentIndex+1}`;
     const captions = await getDBData(URL);
     
@@ -527,6 +539,7 @@ Only approved captions will be displayed
 async function usercaption(captionText) {
     
     // grab data for captionText and imageID
+    const currentIndex = sessionStorage.getItem('currentIndex');
     const imageID = currentIndex + 1; // grab from currentIndex
     
     // set up url and body for post request
