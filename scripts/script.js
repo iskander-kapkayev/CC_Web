@@ -144,7 +144,7 @@ if (window.location.href === `${webURL}/`) {
             
             // access the desired input through the var we setup
             // json stringify should 'clean' it up
-            const captionText = JSON.stringify(captionForm.elements.caption.value);
+            const captionText = captionForm.elements.caption.value;
             
             // perhaps add some caption text checks
             if (!captionText) {
