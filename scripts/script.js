@@ -279,7 +279,7 @@ if (window.location.href === `${webURL}/signup.html`) {
                 
                 setTimeout(() => {
                     window.location.href = `${webURL}/login.html`; // redirect to login
-                  }, 3000);
+                  }, 1500);
                 
             } else {
                 const type = 'error';
@@ -319,7 +319,7 @@ if (window.location.href === `${webURL}/login.html`) {
                 
                 setTimeout(() => {
                     window.location.href = `${webURL}`; // redirect to main page
-                  }, 3000);
+                  }, 1500);
                 
             } else {
                 const type = 'error';
@@ -628,7 +628,7 @@ window.onload = function() {
         cform = document.getElementById('captionformheader');
         cform.style.display = 'flex';
         cform = document.getElementById('loginChange');
-        cform.innerHTML = `<a onclick="signoutUser()">Sign Out</a>`; // change what is shown
+        cform.innerHTML = `<a href="" onclick="signoutUser()">Sign Out</a>`; // change login to sign out
 
     } else {
         // do nothing
