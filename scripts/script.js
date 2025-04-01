@@ -14,8 +14,8 @@ One will be for posts.
 async function getDBData (URL) {
     let retries = 0; // re-try the operation if failed
     let response;
-    
-    while (retries < 5) {
+
+    while (retries < 10) {
         try {
             response = await fetch(URL);
             break; // Success, exit the loop
@@ -23,7 +23,7 @@ async function getDBData (URL) {
             retries++;
             console.error(`Operation failed, retrying (${retries}/5):`, error);
             // Optionally add a delay before retrying
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
+            await new Promise(resolve => setTimeout(resolve, 100)); // Wait less than 1 second
         }
     } // this should re-run the process in case of an error
 
