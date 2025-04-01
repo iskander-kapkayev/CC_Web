@@ -68,7 +68,7 @@ async function moveToImageNext() {
     const storedArrayString = sessionStorage.getItem('imageURLs');
     const storedArray = JSON.parse(storedArrayString);
     
-    const currentIndex = sessionStorage.getItem('currentIndex');
+    let currentIndex = sessionStorage.getItem('currentIndex');
 
     currentIndex = (currentIndex + 1) % storedArray.length;
     img.src = storedArray[currentIndex];
@@ -92,7 +92,7 @@ async function moveToImagePrev() {
     const storedArrayString = sessionStorage.getItem('imageURLs');
     const storedArray = JSON.parse(storedArrayString);
 
-    const currentIndex = sessionStorage.getItem('currentIndex');
+    let currentIndex = sessionStorage.getItem('currentIndex');
     
     currentIndex = (currentIndex - 1); // subtract by 1
     if (currentIndex < 0) {
