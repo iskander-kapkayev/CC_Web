@@ -68,13 +68,13 @@ async function moveToImageNext() {
     const storedArrayString = sessionStorage.getItem('imageURLs');
     const storedArray = JSON.parse(storedArrayString);
     
-    let currentIndex = Number(sessionStorage.getItem('currentIndex'));
+    let currentIndex = Number(localStorage.getItem('currentIndex'));
 
     currentIndex = (currentIndex + 1) % storedArray.length;
     img.src = storedArray[currentIndex];
     img.alt = `index ${currentIndex}`;
 
-    sessionStorage.setItem('currentIndex', currentIndex); // set new currentIndex
+    localStorage.setItem('currentIndex', currentIndex); // set new currentIndex
 
     // once an image is changed, then the currentIndex 
     // is changed and captions need to be grabbed
@@ -92,7 +92,7 @@ async function moveToImagePrev() {
     const storedArrayString = sessionStorage.getItem('imageURLs');
     const storedArray = JSON.parse(storedArrayString);
 
-    let currentIndex = Number(sessionStorage.getItem('currentIndex'));
+    let currentIndex = Number(localStorage.getItem('currentIndex'));
     
     currentIndex = (currentIndex - 1); // subtract by 1
     if (currentIndex < 0) {
@@ -107,7 +107,7 @@ async function moveToImagePrev() {
     img.src = storedArray[currentIndex];
     img.alt = `index ${currentIndex}`;
 
-    sessionStorage.setItem('currentIndex', currentIndex); // set new currentIndex
+    localStorage.setItem('currentIndex', currentIndex); // set new currentIndex
 
     // once an image is changed, then the currentIndex 
     // is changed and captions need to be grabbed
@@ -126,11 +126,11 @@ async function assignImage() {
     */
 
     sessionStorage.setItem('imageURLs', JSON.stringify(imageURLs));
-    sessionStorage.setItem('currentIndex', 0); // initialize currentIndex at 0
+    localStorage.setItem('currentIndex', 0); // initialize currentIndex at 0
 
     // set the first image on start up
     let img = document.getElementById('myImage');
-    const currentIndex = Number(sessionStorage.getItem('currentIndex'));
+    const currentIndex = Number(localStorage.getItem('currentIndex'));
     img.src = imageURLs[currentIndex];
     img.alt = `index ${currentIndex}`;
     await collectCaptions();
@@ -521,7 +521,7 @@ function tester() {
 // this function will grab captions for current image
 async function collectCaptions() {
     // currentIndex + 1 will represent the imageID we are handling
-    const currentIndex = Number(sessionStorage.getItem('currentIndex'));
+    const currentIndex = Number(localStorage.getItem('currentIndex'));
     const URL = `${servURL}/collectcaptions?imageid=${currentIndex+1}`;
     const captions = await getDBData(URL);
     
@@ -539,7 +539,7 @@ Only approved captions will be displayed
 async function usercaption(captionText) {
     
     // grab data for captionText and imageID
-    const currentIndex = Number(sessionStorage.getItem('currentIndex'));
+    const currentIndex = Number(localStorage.getItem('currentIndex'));
     const imageID = currentIndex + 1; // grab from currentIndex
     
     // set up url and body for post request
