@@ -405,7 +405,7 @@ async function userupvote(dataInfo) {
         const type = 'error';
         const icon = 'fa-solid fa-circle-exclamation';
         const title = 'Error';
-        const text = 'Please login. User authorization not found.';
+        const text = 'Please login. User not found.';
         createToast(type, icon, title, text);
         return;
     }
@@ -464,7 +464,7 @@ async function userdownvote(dataInfo) {
         const type = 'error';
         const icon = 'fa-solid fa-circle-exclamation';
         const title = 'Error';
-        const text = 'Please login. User authorization not found.';
+        const text = 'Please login. User not found.';
         createToast(type, icon, title, text);
         return;
     }
