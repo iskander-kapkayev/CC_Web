@@ -13,10 +13,11 @@ One will be for posts.
 
 async function getDBData (URL) {
     let retries = 0; // re-try the operation if failed
-
+    let response;
+    
     while (retries < 5) {
         try {
-            const response = await fetch(URL);
+            response = await fetch(URL);
             break; // Success, exit the loop
         } catch (error) {
             retries++;
