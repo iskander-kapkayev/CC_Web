@@ -122,7 +122,7 @@ async function assignImage() {
     console.log(initImageURLs.imageurls);
     console.log(initImageURLs.imageurls.length);
 
-    initImageURLs.imageurl.forEach(url => {
+    initImageURLs.imageurls.forEach(url => {
         imageURLs.push(url);
     });
 
