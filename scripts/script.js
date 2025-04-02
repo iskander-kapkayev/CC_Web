@@ -124,6 +124,8 @@ async function assignImage() {
         imageURLs.push(url);
     });
 
+    console.log(imageURLs);
+
     sessionStorage.setItem('imageURLs', JSON.stringify(imageURLs));
     if (!localStorage.getItem('currentIndex')) {
         localStorage.setItem('currentIndex', 0); // initialize currentIndex at 0
