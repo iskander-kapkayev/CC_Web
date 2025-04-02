@@ -59,7 +59,7 @@ Below styles will reflect the navigation menu
   color: #ffffff;
 }
 
-.userpages ul {
+.userpages nav ul {
   list-style-type: none;
   background-color: #FFFFFF;
   display: flex; /* use Flexbox to align items */
@@ -74,14 +74,14 @@ Below styles will reflect the navigation menu
   border-radius: 8px;
 }
 
-.userpages ul li a {
+.userpages nav ul li a {
   display: block;
   color: #000000;
   text-decoration: none;
   padding: 1vw 4vw; /* 5px top/bottom, 80px left/right */
 }
 
-.userpages ul li a:hover {
+.userpages nav ul li a:hover {
   background-color: #32a889;
   border-radius: 8px;
   color: #ffffff;
