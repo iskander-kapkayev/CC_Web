@@ -673,8 +673,6 @@ This section is for the loader
 window.addEventListener('load', function() {
     
     const loaderWrapper = document.getElementById('loader-wrapper');
-    if (loadWrapper) {
-        loaderWrapper.style.display = 'none';
-    }
-    
+    loaderWrapper.style.display = 'none';
+
 });
