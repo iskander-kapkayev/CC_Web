@@ -72,7 +72,7 @@ async function moveToImageNext() {
     let currentIndex = Number(localStorage.getItem('currentIndex'));
 
     currentIndex = (currentIndex + 1) % storedArray.length;
-    img.src = `{img_${currentIndex}}`;
+    img.src = storedArray[currentIndex];
     img.alt = `index ${currentIndex}`;
 
     localStorage.setItem('currentIndex', currentIndex); // set new currentIndex
@@ -105,7 +105,7 @@ async function moveToImagePrev() {
         // currentInfex is not -1
         currentIndex = (currentIndex) % storedArray.length;
     }
-    img.src = `{img_${currentIndex}}`;
+    img.src = storedArray[currentIndex];
     img.alt = `index ${currentIndex}`;
 
     localStorage.setItem('currentIndex', currentIndex); // set new currentIndex
@@ -134,7 +134,7 @@ async function assignImage() {
     // set the first image on start up
     let img = document.getElementById('myImage');
     const currentIndex = Number(localStorage.getItem('currentIndex'));
-    img.src = `{img_${currentIndex}}`;
+    img.src = imageURLs[currentIndex];
     img.alt = `index ${currentIndex}`;
     await collectCaptions();
 }
