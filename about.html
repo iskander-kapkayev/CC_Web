@@ -33,32 +33,18 @@
     <!-- this div container will allow for nice centered boxy structure for image display -->
     <section class="image-container">
 
-        <!-- points to the anime images, with a button allowing to cycle through it -->
-        <img id="myImage" src="" alt="caption_images" />
+        <h2>About me:</h2>
 
-        <!-- these are the buttons to move back and forth -->
-        <span>
-            <br>
-            <button onclick="moveToImagePrev()">Prev Image</button>
-            <button onclick="moveToImageNext()">Next Image</button>
-            <br>
-        </span>
-        <!-- when one of these buttons are clicked, the comment section should also change -->
+        <p>
+          Feel free to enjoy the caption contest.
+          In order to participate, you will need to register an account.
+          After you register, you will be able to vote and leave your own caption.
+          Try to get the most likes for your caption!
+          
+          In order to contact me, you can find my contact info below:
+                    Email: iskander.kapkayev@gmail.com
+        </p>
 
-        <h2>User Captions:</h2>
-        <div id="post-container" class="post-container">
-            <!-- captions will be dynamically loaded here -->
-        </div>
-
-        <!-- caption Form, should be toggled off if not logged in -->
-        <h2 id="captionformheader" style="display: none;">Your Turn:</h2>
-        <div class="form-container" id="captionform" style="display: none;">
-            <h3>Can you make us laugh?</h3> 
-            <form id="captionFormData">
-            <input type="caption" id="caption" name="caption" placeholder="Type your caption here..." required pattern="[A-Za-z0-9._'\-]+">
-            <button type="submit" value="Submit">Add Cap</button>
-            </form>
-        </div>
 
     </section>
 
