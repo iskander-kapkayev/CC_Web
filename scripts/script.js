@@ -119,7 +119,7 @@ async function assignImage() {
     const initImageURLs = await getDBData(URL); // this will fetch data from http request to grab all images
     let imageURLs = [];
 
-    console.log(initImageURLs.imageurl);
+    console.log(initImageURLs);
     console.log(initImageURLs.imageurl.length);
 
     initImageURLs.imageurl.forEach(url => {
