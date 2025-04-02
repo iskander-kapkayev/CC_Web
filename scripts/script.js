@@ -12,25 +12,7 @@ One will be for posts.
 */
 
 async function getDBData (URL) {
-    let retries = 0; // re-try the operation if failed
-    let response;
-
-    while (retries < 5) {
-        try {
-            response = await fetch(URL);
-            if (response.message === 'Failure') {
-                retries++;
-                console.error(`Operation failed, retrying (${retries}/5):`, error);
-                // Optionally add a delay before retrying
-                await new Promise(resolve => setTimeout(resolve, 100)); // Wait less than 1 second
-            } else {
-                break; // Success, exit the loop
-            }
-        } catch (error) {
-            console.error(`Operation failed`);
-        }
-    } // this should re-run the process in case of an error
-
+    const response = await fetch(URL);
     const data = await response.json();
     return data;
 }
