@@ -119,9 +119,6 @@ async function assignImage() {
     const initImageURLs = await getDBData(URL); // this will fetch data from http request to grab all images
     let imageURLs = [];
 
-    console.log(initImageURLs.imageurls);
-    console.log(initImageURLs.imageurls.length);
-
     initImageURLs.imageurls.forEach(url => {
         imageURLs.push(url);
     });
@@ -668,3 +665,12 @@ function signoutUser() {
         window.location.href = `${webURL}`; // redirect to main page
       }, 1500);
 }
+
+/*
+This section is for the loader
+*/
+
+window.addEventListener('load', function() {
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    loaderWrapper.style.display = 'none';
+});
