@@ -15,15 +15,19 @@ async function getDBData (URL) {
     let retries = 0; // re-try the operation if failed
     let response;
 
-    while (retries < 10) {
+    while (retries < 5) {
         try {
             response = await fetch(URL);
-            break; // Success, exit the loop
+            if (response.message === 'Failure') {
+                retries++;
+                console.error(`Operation failed, retrying (${retries}/5):`, error);
+                // Optionally add a delay before retrying
+                await new Promise(resolve => setTimeout(resolve, 100)); // Wait less than 1 second
+            } else {
+                break; // Success, exit the loop
+            }
         } catch (error) {
-            retries++;
-            console.error(`Operation failed, retrying (${retries}/5):`, error);
-            // Optionally add a delay before retrying
-            await new Promise(resolve => setTimeout(resolve, 100)); // Wait less than 1 second
+            console.error(`Operation failed`);
         }
     } // this should re-run the process in case of an error
 
@@ -130,14 +134,12 @@ async function moveToImagePrev() {
 
 async function assignImage() {
     let URL = `${servURL}/graballimages`;
-    let imageURLs = await getDBData(URL); // this will fetch data from http request to grab all images
-    
-    /*
-    // we can now populate all urls into array
-    imageURLs.forEach(url => {
-        allImages.push(url);
+    const initImageURLs = await getDBData(URL); // this will fetch data from http request to grab all images
+    let imageURLs = [];
+
+    initImageURLs.imageurl.forEach(url => {
+        imageURLs.push(url);
     });
-    */
 
     sessionStorage.setItem('imageURLs', JSON.stringify(imageURLs));
     if (!localStorage.getItem('currentIndex')) {
