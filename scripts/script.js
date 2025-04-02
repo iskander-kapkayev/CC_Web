@@ -671,8 +671,10 @@ This section is for the loader
 */
 
 window.addEventListener('load', function() {
-    if (window.location.href === `${webURL}`) {
-        const loaderWrapper = document.getElementById('loader-wrapper');
+    
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    if (loadWrapper) {
         loaderWrapper.style.display = 'none';
     }
+    
 });
