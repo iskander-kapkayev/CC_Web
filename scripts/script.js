@@ -148,8 +148,10 @@ if (window.location.href === `${webURL}/`) {
     document.addEventListener('DOMContentLoaded', async function() {
         
         // grab images for display
-        await assignImage();
-
+        if (!sessionStorage.getItem('imageURLs')) {
+            await assignImage();
+        }
+        
         // set reg and login forms
         const captionForm = document.getElementById('captionFormData');
 
