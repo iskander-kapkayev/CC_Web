@@ -59,6 +59,34 @@ Below styles will reflect the navigation menu
   color: #ffffff;
 }
 
+.userpages ul {
+  list-style-type: none;
+  background-color: #FFFFFF;
+  display: flex; /* use Flexbox to align items */
+  justify-content: space-around; /* evenly space items */
+  align-items: center; /* center items vertically */
+  padding: 5px 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 360px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px #0000001a;
+  border-radius: 8px;
+}
+
+.userpages ul li a {
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  padding: 1vw 4vw; /* 5px top/bottom, 80px left/right */
+}
+
+.userpages ul li a:hover {
+  background-color: #32a889;
+  border-radius: 8px;
+  color: #ffffff;
+}
+
 .image-container {
   text-align: center;
   background: #FFFFFF;
