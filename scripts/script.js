@@ -131,10 +131,13 @@ async function assignImage() {
         // no need to initialize currentIndex, since it already exists
     }
 
+    const storedArrayString = sessionStorage.getItem('imageURLs');
+    const storedArray = JSON.parse(storedArrayString);
+
     // set the first image on start up
     let img = document.getElementById('myImage');
     const currentIndex = Number(localStorage.getItem('currentIndex'));
-    img.src = imageURLs[currentIndex];
+    img.src = storedArray[currentIndex];
     img.alt = `index ${currentIndex}`;
     await collectCaptions();
 }
