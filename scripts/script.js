@@ -120,6 +120,8 @@ async function assignImage() {
     const initImageURLs = await getDBData(URL); // this will fetch data from http request to grab all images
     let imageURLs = [];
 
+    console.log(imageURLs);
+
     initImageURLs.imageurls.forEach(url => {
         imageURLs.push(url);
     });
@@ -150,9 +152,7 @@ if (window.location.href === `${webURL}/`) {
     document.addEventListener('DOMContentLoaded', async function() {
         
         // grab images for display
-        if (!sessionStorage.getItem('imageURLs')) {
-            await assignImage();
-        }
+        await assignImage();
         
         // set reg and login forms
         const captionForm = document.getElementById('captionFormData');
