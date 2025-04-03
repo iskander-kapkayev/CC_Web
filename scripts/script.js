@@ -356,7 +356,7 @@ It connects with the image handler.
 Only approved captions will be displayed
 */
 
-// Display up to 10 posts
+// Display posts
 function displayCaptions(currentCaptions) {
     const postContainer = document.getElementById('post-container');
     postContainer.innerHTML = '';
@@ -378,6 +378,65 @@ function displayCaptions(currentCaptions) {
                     
                 </div>
             `;
+            // set attribute data-info
+            // escape the JSON string for embedding in HTML
+            const customData = {
+                captiontext: currentCaptions[`${i}`].captiontext,
+                username: currentCaptions[`${i}`].username,
+            };
+            const jsonData = escapeJson(JSON.stringify(customData)); // for custome data-info
+            // insert the escaped JSON into the HTML
+            // find the postUpvotes element to set the data-info attribute
+            const postUpvotesElement = postElement.querySelector('#postUpvotes');
+            postUpvotesElement.setAttribute('data-info', jsonData);
+            postContainer.appendChild(postElement);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// adjusted to show delete button if you are the correct user
+function displayCaptionsUser(currentCaptions, thisusername) {
+    const postContainer = document.getElementById('post-container');
+    postContainer.innerHTML = '';
+    try {
+        for(let i = 0; i < Object.keys(currentCaptions).length; i++) {
+            
+            const postElement = document.createElement('div');
+            
+            postElement.className = 'post';
+            if (currentCaptions[`${i}`].username == thisusername) {
+                // this is the user of the post
+                postElement.innerHTML = `
+                <span id='captuser'>
+                    <span id='postCaption'>${currentCaptions[`${i}`].captiontext}</span>
+                    <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
+                </span>
+                <div id='postUpvotes'>
+                    <span class='deletion'> <a onclick="tester()"><i id='trashcan' class="material-symbols-outlined">delete</i></a></span>
+                    <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
+                    <span class='votenum'>${currentCaptions[`${i}`].votecount}</span>
+                    <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>
+                    
+                </div>
+                `;
+            } else {
+                // this is not the user of the post
+                postElement.innerHTML = `
+                <span id='captuser'>
+                    <span id='postCaption'>${currentCaptions[`${i}`].captiontext}</span>
+                    <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
+                </span>
+                <div id='postUpvotes'>
+                    <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
+                    <span class='votenum'>${currentCaptions[`${i}`].votecount}</span>
+                    <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>
+                    
+                </div>
+                `;
+            }
+            
             // set attribute data-info
             // escape the JSON string for embedding in HTML
             const customData = {
@@ -529,11 +588,25 @@ function tester() {
 async function collectCaptions() {
     // currentIndex + 1 will represent the imageID we are handling
     const currentIndex = Number(localStorage.getItem('currentIndex')) + 1;
-    const URL = `${servURL}/collectcaptions?imageid=${currentIndex}`;
+    let URL = `${servURL}/collectcaptions?imageid=${currentIndex}`;
     const captions = await getDBData(URL);
     
-    // display captions
-    displayCaptions(captions);
+    // check if token exists
+    if (!sessionStorage.getItem('usertoken')) {
+        // no token, so display captions normally
+        displayCaptions(captions);
+    } else {
+        // token does exist, so username must exist
+        // grab username from token
+        const thistoken = sessionStorage.getItem('usertoken');
+        const body = {
+            token: thistoken 
+        }; // body data 
+        URL = `${servURL}/grabusername`;
+        const username = await postNoAuth(URL, body);
+        // no token, so display captions normally
+        displayCaptionsUser(captions, username);
+    }
 }
 
 /*
