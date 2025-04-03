@@ -120,13 +120,9 @@ async function assignImage() {
     const initImageURLs = await getDBData(URL); // this will fetch data from http request to grab all images
     let imageURLs = [];
 
-    console.log(imageURLs);
-
     initImageURLs.imageurls.forEach(url => {
         imageURLs.push(url);
     });
-
-    console.log(imageURLs);
 
     sessionStorage.setItem('imageURLs', JSON.stringify(imageURLs));
     if (!localStorage.getItem('currentIndex')) {
@@ -365,18 +361,19 @@ function displayCaptions(currentCaptions) {
     const postContainer = document.getElementById('post-container');
     postContainer.innerHTML = '';
     try {
-        currentCaptions.slice(0, 20).forEach(post => {
+        for(let i = 0; i < Object.keys(currentCaptions).length; i++) {
+            
             const postElement = document.createElement('div');
             
             postElement.className = 'post';
             postElement.innerHTML = `
                 <span id='captuser'>
-                    <span id='postCaption'>${post.captiontext}</span>
-                    <span id='postUser'> - ${post.username} </span>
+                    <span id='postCaption'>${currentCaptions.i.captiontext}</span>
+                    <span id='postUser'> - ${currentCaptions.i.username} </span>
                 </span>
                 <div id='postUpvotes'>
                     <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
-                    <span class='votenum'>${post.votecount}</span>
+                    <span class='votenum'>${currentCaptions.i.votecount}</span>
                     <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>
                     
                 </div>
@@ -384,8 +381,8 @@ function displayCaptions(currentCaptions) {
             // set attribute data-info
             // escape the JSON string for embedding in HTML
             const customData = {
-                captiontext: post.captiontext,
-                username: post.username,
+                captiontext: currentCaptions.i.captiontext,
+                username: currentCaptions.i.username,
             };
             const jsonData = escapeJson(JSON.stringify(customData)); // for custome data-info
             // insert the escaped JSON into the HTML
@@ -393,9 +390,9 @@ function displayCaptions(currentCaptions) {
             const postUpvotesElement = postElement.querySelector('#postUpvotes');
             postUpvotesElement.setAttribute('data-info', jsonData);
             postContainer.appendChild(postElement);
-        });
+        }
     } catch (error) {
-        console.error(error);
+        console.log(error);
     }
 }
 
@@ -531,8 +528,8 @@ function tester() {
 // this function will grab captions for current image
 async function collectCaptions() {
     // currentIndex + 1 will represent the imageID we are handling
-    const currentIndex = Number(localStorage.getItem('currentIndex'));
-    const URL = `${servURL}/collectcaptions?imageid=${currentIndex+1}`;
+    const currentIndex = Number(localStorage.getItem('currentIndex')) + 1;
+    const URL = `${servURL}/collectcaptions?imageid=${currentIndex}`;
     const captions = await getDBData(URL);
     
     // display captions
