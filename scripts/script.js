@@ -368,12 +368,12 @@ function displayCaptions(currentCaptions) {
             postElement.className = 'post';
             postElement.innerHTML = `
                 <span id='captuser'>
-                    <span id='postCaption'>${currentCaptions.i.captiontext}</span>
-                    <span id='postUser'> - ${currentCaptions.i.username} </span>
+                    <span id='postCaption'>${currentCaptions[`${i}`].captiontext}</span>
+                    <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
                 </span>
                 <div id='postUpvotes'>
                     <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
-                    <span class='votenum'>${currentCaptions.i.votecount}</span>
+                    <span class='votenum'>${currentCaptions[`${i}`].votecount}</span>
                     <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>
                     
                 </div>
@@ -381,8 +381,8 @@ function displayCaptions(currentCaptions) {
             // set attribute data-info
             // escape the JSON string for embedding in HTML
             const customData = {
-                captiontext: currentCaptions.i.captiontext,
-                username: currentCaptions.i.username,
+                captiontext: currentCaptions[`${i}`].captiontext,
+                username: currentCaptions[`${i}`].username,
             };
             const jsonData = escapeJson(JSON.stringify(customData)); // for custome data-info
             // insert the escaped JSON into the HTML
