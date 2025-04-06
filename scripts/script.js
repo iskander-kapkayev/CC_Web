@@ -411,7 +411,7 @@ function displayCaptionsUser(currentCaptions, thisusername) {
                 // this is the user of the post
                 postElement.innerHTML = `
                 <span id="captuser">
-                    <span id="postCaption">${currentCaptions[`${i}`].captiontext}</span>
+                    <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
                     <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
                     <span class="deletion"> <a onclick="tester()"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
                 </span>
@@ -425,7 +425,7 @@ function displayCaptionsUser(currentCaptions, thisusername) {
                 // this is not the user of the post
                 postElement.innerHTML = `
                 <span id='captuser'>
-                    <span id='postCaption'>${currentCaptions[`${i}`].captiontext}</span>
+                    <span id='postCaption'>${currentCaptions[`${i}`].captiontext}&ensp;</span>
                     <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
                 </span>
                 <div id='postUpvotes'>

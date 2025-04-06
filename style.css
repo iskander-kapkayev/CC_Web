@@ -143,12 +143,11 @@ Below styles will reflect the caption section
 
 .post #captuser {
   flex-direction: column; /* align items vertically */
+  height: 25px;
   justify-content: flex-end;
-  align-items: flex-end;
 }
 
 .post #postUser {
-  padding-left: 10px;
   color: #32a889;
   font-size: 12px;
 }
