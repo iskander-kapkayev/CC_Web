@@ -400,6 +400,7 @@ function displayCaptions(currentCaptions) {
 function displayCaptionsUser(currentCaptions, thisusername) {
     const postContainer = document.getElementById('post-container');
     postContainer.innerHTML = '';
+    console.log(thisusername);
     try {
         for(let i = 0; i < Object.keys(currentCaptions).length; i++) {
             
