@@ -165,18 +165,6 @@ Below styles will reflect the caption section
 
   align-items: center;
   justify-content: space-between;
-  width: 75px;
-}
-
-.post #postUpvotesDelete {
-  display: flex;
-  padding-right: 5px;
-  align-self: flex-end;
-  text-decoration: none;
-  border-radius: 8px;
-
-  align-items: center;
-  justify-content: space-between;
   width: 100px;
 }
 

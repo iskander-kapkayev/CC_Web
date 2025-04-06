@@ -414,7 +414,7 @@ function displayCaptionsUser(currentCaptions, thisusername) {
                     <span id="postCaption">${currentCaptions[`${i}`].captiontext}</span>
                     <span id="postUser"> - ${currentCaptions[`${i}`].username} </span>
                 </span>
-                <div id="postUpvotesDelete">
+                <div id="postUpvotes">
                     <span class="deletion"> <a onclick="tester()"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
                     <span class="heart"> <a onclick="userdownvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="downvoteheart" class="material-symbols-outlined">heart_minus</i></a></span>
                     <span class="votenum">${currentCaptions[`${i}`].votecount}</span>
