@@ -187,7 +187,8 @@ Below styles will reflect the caption section
   font-size: 8px;
   transition: background-color 0.3s ease;
   vertical-align: 0.06em; 
-  align-self: bottom;
+  align-items: flex-end;
+
 }
 
 #deleteicon:hover {
