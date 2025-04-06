@@ -132,7 +132,7 @@ Below styles will reflect the caption section
 .post {
   display: flex;
   flex-direction: column; /* align items vertically */
-  
+  justify-content: flex-end;
   margin-top: 10px;
   padding: 5px;
   padding-left: 15px;
@@ -173,6 +173,7 @@ Below styles will reflect the caption section
   text-align: center;
   border-radius: 5px;
   transition: background-color 0.3s ease; 
+  
 }
 
 .votenum {
@@ -186,6 +187,7 @@ Below styles will reflect the caption section
   font-size: 8px;
   transition: background-color 0.3s ease;
   vertical-align: 0.06em; 
+  align-self: bottom;
 }
 
 #deleteicon:hover {
