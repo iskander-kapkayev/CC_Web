@@ -409,16 +409,15 @@ function displayCaptionsUser(currentCaptions, thisusername) {
             if (currentCaptions[`${i}`].username == thisusername) {
                 // this is the user of the post
                 postElement.innerHTML = `
-                <span id='captuser'>
-                    <span id='postCaption'>${currentCaptions[`${i}`].captiontext}</span>
-                    <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
+                <span id="captuser">
+                    <span id="postCaption">${currentCaptions[`${i}`].captiontext}</span>
+                    <span id="postUser"> - ${currentCaptions[`${i}`].username} </span>
                 </span>
-                <div id='postUpvotes'>
-                    <span class='deletion'> <a onclick="tester()"><i id='trashcan' class="material-symbols-outlined">delete</i></a></span>
-                    <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
-                    <span class='votenum'>${currentCaptions[`${i}`].votecount}</span>
-                    <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>
-                    
+                <div id="postUpvotes">
+                    <span class="deletion"> <a onclick="tester()"><i class="material-symbols-outlined">delete</i></a></span>
+                    <span class="heart"> <a onclick="userdownvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="downvoteheart" class="material-symbols-outlined">heart_minus</i></a></span>
+                    <span class="votenum">${currentCaptions[`${i}`].votecount}</span>
+                    <span class="heart"> <a onclick="userupvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="upvoteheart" class="material-symbols-outlined">heart_plus</i></a></span>
                 </div>
                 `;
             } else {
@@ -431,8 +430,7 @@ function displayCaptionsUser(currentCaptions, thisusername) {
                 <div id='postUpvotes'>
                     <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
                     <span class='votenum'>${currentCaptions[`${i}`].votecount}</span>
-                    <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>
-                    
+                    <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>  
                 </div>
                 `;
             }
