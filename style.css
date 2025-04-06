@@ -184,8 +184,8 @@ Below styles will reflect the caption section
 
 .deletion {
   font-size: 14px;
-  text-align: center;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
+  vertical-align: 0.06em; 
 }
 
 #deleteicon:hover {
