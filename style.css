@@ -142,7 +142,9 @@ Below styles will reflect the caption section
 }
 
 .post #captuser {
-  align-self: flex-start;
+  flex-direction: column; /* align items vertically */
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .post #postUser {
