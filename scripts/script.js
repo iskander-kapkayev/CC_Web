@@ -397,7 +397,7 @@ function displayCaptions(currentCaptions) {
 }
 
 // adjusted to show delete button if you are the correct user
-function displayCaptionsUser(currentCaptions, thisusername) {
+function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
     const postContainer = document.getElementById('post-container');
     postContainer.innerHTML = '';
     
@@ -598,13 +598,23 @@ async function collectCaptions() {
         // token does exist, so username must exist
         // grab username from token
         const thistoken = sessionStorage.getItem('usertoken');
-        const body = {
+        let body = {
             token: thistoken 
         }; // body data 
         URL = `${servURL}/grabusername`;
-        const username = await postNoAuth(URL, body);
+        const thisusername = await postAuth(URL, body, thistoken);
+
+        // now that we have the user
+        // grab the captiontext user voted for
+        body = {
+            username: thisusername,
+            imageid: currentIndex
+        }; // body data 
+        URL = `${servURL}/grabuservotes`;
+        const thisuservotes = await postAuth(URL, body, thistoken);
+
         // no token, so display captions normally
-        displayCaptionsUser(captions, username);
+        displayCaptionsUser(captions, thisusername, thisuservotes);
     }
 }
 
