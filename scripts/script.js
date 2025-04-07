@@ -417,13 +417,11 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
             thisy = ''; // always reset thisy value
 
             // did the user upvote this caption?
-            for (let i = 0; i < Object.keys(thisuservotes).length; i++) {
+            for (let k = 0; k < Object.keys(thisuservotes).length; k++) {
                 // check to see captiontext exists and if upvote/downvote
-                console.log(thisuservotes[`${i}`].captiontext);
-                console.log(currentCaptions[`${i}`].captiontext);
-                
-                if (thisuservotes[`${i}`].captiontext == currentCaptions[`${i}`].captiontext) {
-                    if (thisuservotes[`${i}`].type == 'upvote') {
+
+                if (thisuservotes[`${k}`].captiontext == currentCaptions[`${i}`].captiontext) {
+                    if (thisuservotes[`${k}`].type == 'upvote') {
                         thisy = uppy;
                     } else {
                         thisy = downy;
