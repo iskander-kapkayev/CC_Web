@@ -598,9 +598,7 @@ async function collectCaptions() {
         // token does exist, so username must exist
         // grab username from token
         const thistoken = sessionStorage.getItem('usertoken');
-        let body = {
-            token: thistoken 
-        }; // body data 
+        let body = {}; // empty body data 
         URL = `${servURL}/grabusername`;
         const thisusername = await postAuth(URL, body, thistoken);
 
@@ -608,7 +606,7 @@ async function collectCaptions() {
         // grab the captiontext user voted for
         body = {
             username: thisusername,
-            imageid: currentIndex
+            imageid: currentIndex,
         }; // body data 
         URL = `${servURL}/grabuservotes`;
         const thisuservotes = await postAuth(URL, body, thistoken);
