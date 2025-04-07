@@ -217,6 +217,24 @@ Below styles will reflect the caption section
   background-color: #ec2d57;
 }
 
+#downvoteheartVOTE {
+  padding: 0.1px;
+  padding-left: 1px;
+  border-radius: 25% 10%;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #ec2d57;
+}
+
+#upvoteheartVOTE {
+  padding: 0.1px;
+  padding-left: 1px;
+  border-radius: 10% 25%;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #32a889;
+}
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,

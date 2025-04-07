@@ -401,47 +401,138 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
     const postContainer = document.getElementById('post-container');
     postContainer.innerHTML = '';
     console.log(thisuservotes);
+
+    // upvote script, downvote script
+    const uppy = 'up';
+    const downy = 'down';
+    let thisy = '';
+
     try {
-        for(let i = 0; i < Object.keys(currentCaptions).length; i++) {
+        for (let i = 0; i < Object.keys(currentCaptions).length; i++) {
             
             const postElement = document.createElement('div');
             
+            thisy = ''; // always reset thisy value
+
+            // did the user upvote this caption?
+            for (let i = 0; i < Object.keys(thisuservotes).length; i++) {
+                // check to see captiontext exists and if upvote/downvote
+                
+                if (thisuservotes[`${i}`].captiontext == currentCaptions[`${i}`].captiontext) {
+                    if (thisuservotes[`${i}`].type == 'upvote') {
+                        thisy = uppy;
+                    } else {
+                        thisy = downy;
+                    }
+                    break; // break for loop once caption is found
+                }
+            }
+
             postElement.className = 'post';
+
             if (currentCaptions[`${i}`].username == thisusername.username) {
-                // this is the user of the post
-                postElement.innerHTML = `
-                <span id="captuser">
-                    <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
-                    <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
-                    <span class="deletion"> <a onclick="tester()"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
-                </span>
-                <div id="postUpvotes">
-                    <span class="heart"> <a onclick="userdownvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="downvoteheart" class="material-symbols-outlined">heart_minus</i></a></span>
-                    <span class="votenum">${currentCaptions[`${i}`].votecount}</span>
-                    <span class="heart"> <a onclick="userupvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="upvoteheart" class="material-symbols-outlined">heart_plus</i></a></span>
-                </div>
-                `;
+
+                switch (thisy) {
+                    case uppy:
+                        // this is the user of the post with an upvote
+                        postElement.innerHTML = `
+                        <span id="captuser">
+                            <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
+                            <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
+                            <span class="deletion"> <a onclick="tester()"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
+                        </span>
+                        <div id="postUpvotes">
+                            <span class="heart"> <a onclick="userdownvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="downvoteheart" class="material-symbols-outlined">heart_minus</i></a></span>
+                            <span class="votenum">${currentCaptions[`${i}`].votecount}</span>
+                            <span class="heart"> <a onclick="userupvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="upvoteheartVOTE" class="material-symbols-outlined">heart_plus</i></a></span>
+                        </div>
+                        `;
+                        break;
+                    case downy:
+                        // this is the user of the post with a downvote
+                        postElement.innerHTML = `
+                        <span id="captuser">
+                            <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
+                            <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
+                            <span class="deletion"> <a onclick="tester()"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
+                        </span>
+                        <div id="postUpvotes">
+                            <span class="heart"> <a onclick="userdownvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="downvoteheartVOTE" class="material-symbols-outlined">heart_minus</i></a></span>
+                            <span class="votenum">${currentCaptions[`${i}`].votecount}</span>
+                            <span class="heart"> <a onclick="userupvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="upvoteheart" class="material-symbols-outlined">heart_plus</i></a></span>
+                        </div>
+                        `;
+                        break;
+                    default:
+                        // this is the user of the post, no votes
+                        postElement.innerHTML = `
+                        <span id="captuser">
+                            <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
+                            <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
+                            <span class="deletion"> <a onclick="tester()"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
+                        </span>
+                        <div id="postUpvotes">
+                            <span class="heart"> <a onclick="userdownvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="downvoteheart" class="material-symbols-outlined">heart_minus</i></a></span>
+                            <span class="votenum">${currentCaptions[`${i}`].votecount}</span>
+                            <span class="heart"> <a onclick="userupvote(JSON.parse(this.closest("div").getAttribute("data-info")))"><i id="upvoteheart" class="material-symbols-outlined">heart_plus</i></a></span>
+                        </div>
+                        `;                 
+                }
+
             } else {
-                // this is not the user of the post
-                postElement.innerHTML = `
-                <span id='captuser'>
-                    <span id='postCaption'>${currentCaptions[`${i}`].captiontext}&ensp;</span>
-                    <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
-                </span>
-                <div id='postUpvotes'>
-                    <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
-                    <span class='votenum'>${currentCaptions[`${i}`].votecount}</span>
-                    <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>  
-                </div>
-                `;
+                
+                switch (thisy) {
+                    case uppy:
+                        // this is not the user of the post, but they did upvote
+                        postElement.innerHTML = `
+                        <span id='captuser'>
+                            <span id='postCaption'>${currentCaptions[`${i}`].captiontext}&ensp;</span>
+                            <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
+                        </span>
+                        <div id='postUpvotes'>
+                            <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
+                            <span class='votenum'>${currentCaptions[`${i}`].votecount}</span>
+                            <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheartVOTE' class="material-symbols-outlined">heart_plus</i></a></span>  
+                        </div>
+                        `;
+                        break;
+                    case downy:
+                        // this is not the user of the post, but they did downvote
+                        postElement.innerHTML = `
+                        <span id='captuser'>
+                            <span id='postCaption'>${currentCaptions[`${i}`].captiontext}&ensp;</span>
+                            <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
+                        </span>
+                        <div id='postUpvotes'>
+                            <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheartVOTE' class="material-symbols-outlined">heart_minus</i></a></span>
+                            <span class='votenum'>${currentCaptions[`${i}`].votecount}</span>
+                            <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>  
+                        </div>
+                        `;
+                        break;
+                    default:
+                        // this is not the user of the post
+                        postElement.innerHTML = `
+                        <span id='captuser'>
+                            <span id='postCaption'>${currentCaptions[`${i}`].captiontext}&ensp;</span>
+                            <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
+                        </span>
+                        <div id='postUpvotes'>
+                            <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">heart_minus</i></a></span>
+                            <span class='votenum'>${currentCaptions[`${i}`].votecount}</span>
+                            <span class='heart'> <a onclick="userupvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='upvoteheart' class="material-symbols-outlined">heart_plus</i></a></span>  
+                        </div>
+                        `;                 
+                }                
             }
             
             // set attribute data-info
             // escape the JSON string for embedding in HTML
             const customData = {
                 captiontext: currentCaptions[`${i}`].captiontext,
-                username: currentCaptions[`${i}`].username,
+                username: currentCaptions[`${i}`].username
             };
+            
             const jsonData = escapeJson(JSON.stringify(customData)); // for custome data-info
             // insert the escaped JSON into the HTML
             // find the postUpvotes element to set the data-info attribute
