@@ -411,6 +411,8 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
         for (let i = 0; i < Object.keys(currentCaptions).length; i++) {
             
             const postElement = document.createElement('div');
+
+            postElement.className = 'post';
             
             thisy = ''; // always reset thisy value
 
@@ -427,8 +429,6 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                     break; // break for loop once caption is found
                 }
             }
-
-            postElement.className = 'post';
 
             if (currentCaptions[`${i}`].username == thisusername.username) {
 
