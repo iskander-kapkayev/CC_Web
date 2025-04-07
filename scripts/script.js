@@ -419,6 +419,8 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
             // did the user upvote this caption?
             for (let i = 0; i < Object.keys(thisuservotes).length; i++) {
                 // check to see captiontext exists and if upvote/downvote
+                console.log(thisuservotes[`${i}`].captiontext);
+                console.log(currentCaptions[`${i}`].captiontext);
                 
                 if (thisuservotes[`${i}`].captiontext == currentCaptions[`${i}`].captiontext) {
                     if (thisuservotes[`${i}`].type == 'upvote') {
