@@ -245,7 +245,11 @@ async function signInUser(thisEmail, thisPassword) {
         return false;
     } else {
         // a user token was created and should be stored as a session
+        // also store a 30 minute timer for the token
         sessionStorage.setItem('usertoken', signInCheck.token);
+        const now = new Date();
+        const expirationTime = now.getTime() + 30 * 60 * 1000; // minutes * seconds * milliseconds
+        sessionStorage.setItem('expirationTime', expirationTime); // store an expiration time
         return true;
     }
 }
@@ -564,8 +568,14 @@ async function userupvote(dataInfo) {
         type: voteType
     }; // body data 
     
-    // check for token
-    const thistoken = sessionStorage.getItem('usertoken');
+    // check for token (and check token timer)
+    if (checkTimer()){
+        // token is good
+        const thistoken = sessionStorage.getItem('usertoken');
+    } else {
+        signoutUser(); // sign out user if timer is up
+        return;
+    }
 
     if (!thistoken) {
         console.log('No token found');
@@ -624,7 +634,13 @@ async function userdownvote(dataInfo) {
     }; // body data 
     
     // check for token
-    const thistoken = sessionStorage.getItem('usertoken');
+    if (checkTimer()){
+        // token is good
+        const thistoken = sessionStorage.getItem('usertoken');
+    } else {
+        signoutUser(); // sign out user if timer is up
+        return;
+    }
 
     if (!thistoken) {
         console.log('No token found');
@@ -664,6 +680,68 @@ async function userdownvote(dataInfo) {
         const icon = 'fa-solid fa-circle-check';
         const title = 'Success';
         const text = 'Your vote was rescinded.';
+        createToast(type, icon, title, text);
+    }
+}
+
+// this function let's a user delete their own post
+async function userdelete(dataInfo) {
+    
+    const captionText = dataInfo.captiontext; // grab from data
+    const imageID = Number(localStorage.getItem('currentIndex'));
+    // set up url and body for post request
+    const URL = `${servURL}/votecaption`;
+    const body = {
+        captiontext: captionText, 
+        imageid: imageID
+    }; // body data 
+    
+    // check for token
+    if (checkTimer()){
+        // token is good
+        const thistoken = sessionStorage.getItem('usertoken');
+    } else {
+        signoutUser(); // sign out user if timer is up
+        return;
+    }
+
+    if (!thistoken) {
+        console.log('No token found');
+        const type = 'error';
+        const icon = 'fa-solid fa-circle-exclamation';
+        const title = 'Error';
+        const text = 'Please login. User not found.';
+        createToast(type, icon, title, text);
+        return;
+    }
+    
+    // send body and token to server
+    const deletionRequest = await postAuth(URL, body, thistoken);
+    
+    if (deletionRequest.message === 'Token was not recognized') {
+        // unable to downvote
+        console.log('Token was not recognized');
+        const type = 'error';
+        const icon = 'fa-solid fa-circle-exclamation';
+        const title = 'Error';
+        const text = 'Token was not recognized...';
+        createToast(type, icon, title, text);
+    } else if (deletionRequest.message === 'Deletion failed') {
+        // upvote was added successful
+        console.log('Deletion failed');
+        const type = 'error';
+        const icon = 'fa-solid fa-circle-exclamation';
+        const title = 'Error';
+        const text = 'Deletion failed...';
+        createToast(type, icon, title, text);
+    } else if (deletionRequest.message === 'Success') {
+        // upvote was removed successfully
+        console.log('Delete was successful');
+        await collectCaptions();
+        const type = 'success';
+        const icon = 'fa-solid fa-circle-check';
+        const title = 'Success';
+        const text = 'Your caption was deleted.';
         createToast(type, icon, title, text);
     }
 }
@@ -728,7 +806,13 @@ async function usercaption(captionText) {
     }; // body data 
     
     // check for token
-    const thistoken = sessionStorage.getItem('usertoken');
+    if (checkTimer()){
+        // token is good
+        const thistoken = sessionStorage.getItem('usertoken');
+    } else {
+        signoutUser(); // sign out user if timer is up
+        return;
+    }
 
     if (!thistoken) {
         console.log('No token found');
@@ -829,6 +913,7 @@ window.onload = function() {
 // function to delete usertoken and sign out user
 function signoutUser() {
     sessionStorage.removeItem('usertoken'); // remove token
+    sessionStorage.removeItem('expirationTime'); // remove token timer
     
     const type = 'success';
     const icon = 'fa-solid fa-circle-check';
@@ -840,6 +925,21 @@ function signoutUser() {
     setTimeout(() => {
         window.location.href = `${webURL}`; // redirect to main page
       }, 1500);
+}
+
+// function to check if token expired
+function checkTimer() {
+    const tokenExp = sessionStorage.getItem('expirationTime'); // token timer
+    const now = new Date().getTime();
+
+    if (now > tokenExp) {
+        // the token has expired
+        return false;
+    } else {
+        // the token has NOT expired
+        // commence regular ops
+        return true;
+    }
 }
 
 /*
