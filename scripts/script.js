@@ -240,7 +240,7 @@ async function signInUser(thisEmail, thisPassword) {
         password: thisPassword
     };
     const signInCheck = await postNoAuth(URL, body); // this will fetch a token
-    if (signInCheck.message === 'Failure') {
+    if (signInCheck.message === 'Error generating token') {
         // no token was created
         return false;
     } else {
@@ -580,7 +580,7 @@ async function userupvote(dataInfo) {
     // send body and token to server
     const voted = await postAuth(URL, body, thistoken);
     
-    if (voted.message === 'Failure') {
+    if (voted.message === 'Vote was unable to be captured') {
         // unable to upvote
         console.log('Unable to upvote');
         const type = 'error';
@@ -639,7 +639,7 @@ async function userdownvote(dataInfo) {
     // send body and token to server
     const voted = await postAuth(URL, body, thistoken);
     
-    if (voted.message === 'Failure') {
+    if (voted.message === 'Vote was unable to be captured') {
         // unable to downvote
         console.log('Unable to upvote');
         const type = 'error';
@@ -743,7 +743,7 @@ async function usercaption(captionText) {
     // send body and token to server
     const addedCaption = await postAuth(URL, body, thistoken);
     
-    if (addedCaption.message === 'Failure') {
+    if (addedCaption.message != 'Success') {
         // unable to upvote
         console.log('Unable to add caption.');
         const type = 'error';
