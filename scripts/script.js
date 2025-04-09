@@ -560,6 +560,7 @@ async function userupvote(dataInfo) {
     console.log(dataInfo); // should be a string json
     let view = JSON.parse(dataInfo);
     console.log(view); // should be a json
+    console.log(view.captiontext); // should be a string
 
     return;
 
