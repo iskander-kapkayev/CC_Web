@@ -571,11 +571,10 @@ async function userupvote(dataInfo) {
     }; // body data 
     
     // check for token (and check token timer)
-    if (checkTimer()){
-        // token is good
-        const thistoken = sessionStorage.getItem('usertoken');
-    } else {
+    const thistoken = sessionStorage.getItem('usertoken');
+    if (!checkTimer(thistoken)){
         signoutUser(); // sign out user if timer is up
+        console.log('Timer expired. You will be signed out.');
         return;
     }
 
@@ -637,11 +636,10 @@ async function userdownvote(dataInfo) {
     }; // body data 
     
     // check for token
-    if (checkTimer()){
-        // token is good
-        const thistoken = sessionStorage.getItem('usertoken');
-    } else {
+    const thistoken = sessionStorage.getItem('usertoken');
+    if (!checkTimer(thistoken)){
         signoutUser(); // sign out user if timer is up
+        console.log('Timer expired. You will be signed out.');
         return;
     }
 
@@ -701,11 +699,10 @@ async function userdelete(dataInfo) {
     }; // body data 
     
     // check for token
-    if (checkTimer()){
-        // token is good
-        const thistoken = sessionStorage.getItem('usertoken');
-    } else {
+    const thistoken = sessionStorage.getItem('usertoken');
+    if (!checkTimer(thistoken)){
         signoutUser(); // sign out user if timer is up
+        console.log('Timer expired. You will be signed out.');
         return;
     }
 
@@ -810,11 +807,10 @@ async function usercaption(captionText) {
     }; // body data 
     
     // check for token
-    if (checkTimer()){
-        // token is good
-        const thistoken = sessionStorage.getItem('usertoken');
-    } else {
+    const thistoken = sessionStorage.getItem('usertoken');
+    if (!checkTimer(thistoken)){
         signoutUser(); // sign out user if timer is up
+        console.log('Timer expired. You will be signed out.');
         return;
     }
 
@@ -932,7 +928,14 @@ function signoutUser() {
 }
 
 // function to check if token expired
-function checkTimer() {
+function checkTimer(token) {
+    
+    // if token is undefined
+    if (!token) {
+        return false;
+    }
+
+    // if token is defined
     const tokenExp = sessionStorage.getItem('expirationTime'); // token timer
     const now = new Date().getTime();
 
