@@ -557,16 +557,10 @@ function escapeJson(json) {
 // this function upvotes if user is logged in
 async function userupvote(dataInfo) {
     
-    console.log(dataInfo); // should be a string json
-    let view = JSON.parse(dataInfo);
-    console.log(view); // should be a json
-    console.log(view.captiontext); // should be a string
-
-    return;
-
-    const captionText = dataInfo.captiontext; // grab from data
+    const dataInfoJSON = JSON.parse(dataInfo); // parse string
+    const captionText = dataInfoJSON.captiontext; // grab from data
     console.log(captionText);
-    const captionUser = dataInfo.username; // grab from data
+    const captionUser = dataInfoJSON.username; // grab from data
     const voteType = 'upvote';
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
@@ -630,8 +624,9 @@ async function userupvote(dataInfo) {
 // this function downvotes if user is logged in
 async function userdownvote(dataInfo) {
     
-    const captionText = dataInfo.captiontext; // grab from data
-    const captionUser = dataInfo.username; // grab from data
+    const dataInfoJSON = JSON.parse(dataInfo); // parse string
+    const captionText = dataInfoJSON.captiontext; // grab from data
+    const captionUser = dataInfoJSON.username; // grab from data
     const voteType = 'downvote';
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
@@ -695,7 +690,8 @@ async function userdownvote(dataInfo) {
 // this function let's a user delete their own post
 async function userdelete(dataInfo) {
     
-    const captionText = dataInfo.captiontext; // grab from data
+    const dataInfoJSON = JSON.parse(dataInfo);
+    const captionText = dataInfoJSON.captiontext; // grab from data
     const imageID = Number(localStorage.getItem('currentIndex'));
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
