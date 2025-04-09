@@ -537,7 +537,7 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                 username: currentCaptions[`${i}`].username
             };
             
-            const jsonData = escapeJson(JSON.stringify(customData)); // for custome data-info
+            const jsonData = JSON.stringify(customData); // for custome data-info
             // insert the escaped JSON into the HTML
             // find the postUpvotes element to set the data-info attribute
             const postUpvotesElement = postElement.querySelector('#postUpvotes');
@@ -557,6 +557,12 @@ function escapeJson(json) {
 // this function upvotes if user is logged in
 async function userupvote(dataInfo) {
     
+    console.log(dataInfo); // should be a string json
+    let view = JSON.parse(dataInfo);
+    console.log(view); // should be a json
+
+    return;
+
     const captionText = dataInfo.captiontext; // grab from data
     console.log(captionText);
     const captionUser = dataInfo.username; // grab from data
