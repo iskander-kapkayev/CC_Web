@@ -384,6 +384,7 @@ function displayCaptions(currentCaptions) {
             `;
             // set attribute data-info
             // escape the JSON string for embedding in HTML
+
             const customData = {
                 captiontext: currentCaptions[`${i}`].captiontext,
                 username: currentCaptions[`${i}`].username,
@@ -404,7 +405,6 @@ function displayCaptions(currentCaptions) {
 function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
     const postContainer = document.getElementById('post-container');
     postContainer.innerHTML = '';
-    console.log(thisuservotes);
 
     // upvote script, downvote script
     const uppy = 'up';
@@ -558,6 +558,7 @@ function escapeJson(json) {
 async function userupvote(dataInfo) {
     
     const captionText = dataInfo.captiontext; // grab from data
+    console.log(captionText);
     const captionUser = dataInfo.username; // grab from data
     const voteType = 'upvote';
     // set up url and body for post request
