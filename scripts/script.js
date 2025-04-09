@@ -573,7 +573,7 @@ async function userupvote(dataInfo) {
     // check for token (and check token timer)
     const thistoken = sessionStorage.getItem('usertoken');
     if (!checkTimer(thistoken)){
-        signoutUser(); // sign out user if timer is up
+        signoutUser('token'); // sign out user if timer is up
         console.log('Timer expired. You will be signed out.');
         return;
     }
@@ -638,7 +638,7 @@ async function userdownvote(dataInfo) {
     // check for token
     const thistoken = sessionStorage.getItem('usertoken');
     if (!checkTimer(thistoken)){
-        signoutUser(); // sign out user if timer is up
+        signoutUser('token'); // sign out user if timer is up
         console.log('Timer expired. You will be signed out.');
         return;
     }
@@ -701,7 +701,7 @@ async function userdelete(dataInfo) {
     // check for token
     const thistoken = sessionStorage.getItem('usertoken');
     if (!checkTimer(thistoken)){
-        signoutUser(); // sign out user if timer is up
+        signoutUser('token'); // sign out user if timer is up
         console.log('Timer expired. You will be signed out.');
         return;
     }
@@ -809,7 +809,7 @@ async function usercaption(captionText) {
     // check for token
     const thistoken = sessionStorage.getItem('usertoken');
     if (!checkTimer(thistoken)){
-        signoutUser(); // sign out user if timer is up
+        signoutUser('token'); // sign out user if timer is up
         console.log('Timer expired. You will be signed out.');
         return;
     }
@@ -903,7 +903,7 @@ window.onload = function() {
         cform = document.getElementById('captionformheader');
         cform.style.display = 'flex';
         cform = document.getElementById('loginChange');
-        cform.innerHTML = `<a href="" onclick="signoutUser()">Sign Out</a>`; // change login to sign out
+        cform.innerHTML = `<a href="" onclick="signoutUser('regular')">Sign Out</a>`; // change login to sign out
 
     } else {
         // do nothing
@@ -911,14 +911,21 @@ window.onload = function() {
 };
 
 // function to delete usertoken and sign out user
-function signoutUser() {
+function signoutUser(type) {
     sessionStorage.removeItem('usertoken'); // remove token
     sessionStorage.removeItem('expirationTime'); // remove token timer
-    
-    const type = 'success';
-    const icon = 'fa-solid fa-circle-check';
-    const title = 'Success';
-    const text = 'You have been signed out.';
+
+    let type = 'success';
+    let icon = 'fa-solid fa-circle-check';
+    let title = 'Success';
+    let text = 'You have been signed out.';
+
+    if (type == 'token') {
+        type = 'error';
+        icon = 'fa-solid fa-circle-exclamation';
+        title = 'Error';
+        text = 'Signing out - token has expired!';
+    } // adjust toast message if type is token
 
     createToast(type, icon, title, text); // display to user
 
