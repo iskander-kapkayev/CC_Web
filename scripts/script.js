@@ -455,7 +455,7 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                         <span id="captuser">
                             <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
                             <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
-                            <span class="deletion"> <a onclick="tester()"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
+                            <span class="deletion"> <a onclick="userdelete(this.closest("div").getAttribute("data-info"))"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
                         </span>
                         <div id="postUpvotes">
                             <span class="heart"> <a onclick="userdownvote(this.closest("div").getAttribute("data-info"))"><i id="downvoteheart" class="material-symbols-outlined">heart_minus</i></a></span>
@@ -470,7 +470,7 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                         <span id="captuser">
                             <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
                             <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
-                            <span class="deletion"> <a onclick="tester()"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
+                            <span class="deletion"> <a onclick="userdelete(this.closest("div").getAttribute("data-info"))"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
                         </span>
                         <div id="postUpvotes">
                             <span class="heart"> <a onclick="userdownvote(this.closest("div").getAttribute("data-info"))"><i id="downvoteheartVOTE" class="material-symbols-outlined">heart_minus</i></a></span>
@@ -485,7 +485,7 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                         <span id="captuser">
                             <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
                             <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
-                            <span class="deletion"> <a onclick="tester()"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
+                            <span class="deletion"> <a onclick="userdelete(this.closest("div").getAttribute("data-info"))"><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
                         </span>
                         <div id="postUpvotes">
                             <span class="heart"> <a onclick="userdownvote(this.closest("div").getAttribute("data-info"))"><i id="downvoteheart" class="material-symbols-outlined">heart_minus</i></a></span>

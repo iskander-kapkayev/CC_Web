@@ -193,10 +193,10 @@ Below styles will reflect the caption section
 #deleteicon:hover {
   padding: 0.1px;
   padding-left: 1px;
-  border-radius: 10% 25%;
+  border-radius: 25% 10%;
   cursor: pointer;
   color: #ffffff;
-  background-color: #32a889;
+  background-color: #000000;
 }
 
 #upvoteheart:hover {
