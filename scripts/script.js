@@ -911,7 +911,7 @@ window.onload = function() {
 };
 
 // function to delete usertoken and sign out user
-function signoutUser(type) {
+function signoutUser(called) {
     sessionStorage.removeItem('usertoken'); // remove token
     sessionStorage.removeItem('expirationTime'); // remove token timer
 
@@ -920,7 +920,7 @@ function signoutUser(type) {
     let title = 'Success';
     let text = 'You have been signed out.';
 
-    if (type == 'token') {
+    if (called == 'token') {
         type = 'error';
         icon = 'fa-solid fa-circle-exclamation';
         title = 'Error';
@@ -960,11 +960,10 @@ function checkTimer(token) {
 This section is for the loader
 */
 
-/*
 window.addEventListener('load', function() {
     
     const loaderWrapper = document.getElementById('loader-wrapper');
     loaderWrapper.style.display = 'none';
 
 });
-*/
+
