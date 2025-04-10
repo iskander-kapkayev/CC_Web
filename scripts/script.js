@@ -704,12 +704,8 @@ async function userdownvote(dataInfo) {
 // this function let's a user delete their own post
 async function userdelete(dataInfo) {
     
-    console.log(dataInfo);
     const dataInfoJSON = JSON.parse(dataInfo);
-    console.log(dataInfoJSON);
     const captionText = dataInfoJSON.captiontext; // grab from data
-    console.log(captionText);
-    return;
     const imageID = Number(localStorage.getItem('currentIndex'));
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
