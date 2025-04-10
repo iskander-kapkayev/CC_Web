@@ -454,11 +454,11 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                     case uppy:
                         // this is the user of the post with an upvote
                         postElement.innerHTML = `
-                        <span id="captuser">
+                        <div id="captuser">
                             <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
                             <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
                             <span class="deletion"> <a onclick='userdelete(this.closest("div").getAttribute("data-info"))'><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
-                        </span>
+                        </div>
                         <div id="postUpvotes">
                             <span class="heart"> <a onclick='userdownvote(this.closest("div").getAttribute("data-info"))'><i id="downvoteheart" class="material-symbols-outlined">heart_minus</i></a></span>
                             <span class="votenum">${currentCaptions[`${i}`].votecount}</span>
@@ -469,11 +469,11 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                     case downy:
                         // this is the user of the post with a downvote
                         postElement.innerHTML = `
-                        <span id="captuser">
+                        <div id="captuser">
                             <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
                             <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
                             <span class="deletion"> <a onclick='userdelete(this.closest("div").getAttribute("data-info"))'><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
-                        </span>
+                        </div>
                         <div id="postUpvotes">
                             <span class="heart"> <a onclick='userdownvote(this.closest("div").getAttribute("data-info"))'><i id="downvoteheartVOTE" class="material-symbols-outlined">heart_minus</i></a></span>
                             <span class="votenum">${currentCaptions[`${i}`].votecount}</span>
@@ -484,11 +484,11 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                     default:
                         // this is the user of the post, no votes
                         postElement.innerHTML = `
-                        <span id="captuser">
+                        <div id="captuser">
                             <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
                             <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
                             <span class="deletion"> <a onclick='userdelete(this.closest("div").getAttribute("data-info"))'><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
-                        </span>
+                        </div>
                         <div id="postUpvotes">
                             <span class="heart"> <a onclick='userdownvote(this.closest("div").getAttribute("data-info"))'><i id="downvoteheart" class="material-symbols-outlined">heart_minus</i></a></span>
                             <span class="votenum">${currentCaptions[`${i}`].votecount}</span>
