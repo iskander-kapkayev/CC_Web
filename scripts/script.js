@@ -701,7 +701,10 @@ async function userdownvote(dataInfo) {
 async function userdelete(dataInfo) {
     
     const dataInfoJSON = JSON.parse(dataInfo);
+    console.log(dataInfoJSON);
     const captionText = dataInfoJSON.captiontext; // grab from data
+    console.log(captionText);
+    return;
     const imageID = Number(localStorage.getItem('currentIndex'));
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
