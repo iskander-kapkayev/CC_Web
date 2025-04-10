@@ -405,7 +405,9 @@ function displayCaptions(currentCaptions) {
             // insert the escaped JSON into the HTML
             // find the postUpvotes element to set the data-info attribute
             const postUpvotesElement = postElement.querySelector('#postUpvotes');
-            postUpvotesElement.setAttribute('data-info', jsonData);
+            const captuserElement = postElement.querySelector('#captuser');
+            postUpvotesElement.setAttribute('data-info', jsonData); // set for upvotes
+            captuserElement.setAttribute('data-info', jsonData); // set for deletion grab
             postContainer.appendChild(postElement);
         }
     } catch (error) {
@@ -553,7 +555,9 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
             // insert the escaped JSON into the HTML
             // find the postUpvotes element to set the data-info attribute
             const postUpvotesElement = postElement.querySelector('#postUpvotes');
-            postUpvotesElement.setAttribute('data-info', jsonData);
+            const captuserElement = postElement.querySelector('#captuser');
+            postUpvotesElement.setAttribute('data-info', jsonData); // set for upvotes
+            captuserElement.setAttribute('data-info', jsonData); // set for deletion grab
             postContainer.appendChild(postElement);
         }
     } catch (error) {
