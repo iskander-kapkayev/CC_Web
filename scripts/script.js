@@ -146,6 +146,18 @@ async function assignImage() {
 if (window.location.href === `${webURL}/`) {
     
     document.addEventListener('DOMContentLoaded', async function() {
+
+        // used to toggle caption form
+        if (sessionStorage.getItem('usertoken')) {
+            let cform = document.getElementById('captionform');
+            cform.style.display = 'flex';
+            cform = document.getElementById('captionformheader');
+            cform.style.display = 'flex';
+            cform = document.getElementById('loginChange');
+            cform.innerHTML = `<a href="" onclick="signoutUser('regular')">Sign Out</a>`; // change login to sign out
+        } else {
+            // show caption forms if signed in
+        }
         
         // grab images for display
         await assignImage();
@@ -888,27 +900,6 @@ error.onclick = function(){
     createToast(type, icon, title, text);
 }
 */
-
-/*
-Window onload for toggling login/non-login features
-*/
-
-// function to toggle caption form 
-
-// On page load, update the theme based on session storage
-window.onload = function() {
-    if (sessionStorage.getItem('usertoken')) {
-        let cform = document.getElementById('captionform');
-        cform.style.display = 'flex';
-        cform = document.getElementById('captionformheader');
-        cform.style.display = 'flex';
-        cform = document.getElementById('loginChange');
-        cform.innerHTML = `<a href="" onclick="signoutUser('regular')">Sign Out</a>`; // change login to sign out
-
-    } else {
-        // do nothing
-    }
-};
 
 // function to delete usertoken and sign out user
 function signoutUser(called) {
