@@ -401,7 +401,7 @@ function displayCaptions(currentCaptions) {
                 captiontext: currentCaptions[`${i}`].captiontext,
                 username: currentCaptions[`${i}`].username,
             };
-            const jsonData = escapeJson(JSON.stringify(customData)); // for custome data-info
+            const jsonData = JSON.stringify(customData); // for custome data-info
             // insert the escaped JSON into the HTML
             // find the postUpvotes element to set the data-info attribute
             const postUpvotesElement = postElement.querySelector('#postUpvotes');
