@@ -713,10 +713,6 @@ async function userdelete(dataInfo) {
         captiontext: captionText, 
         imageid: imageID
     }; // body data 
-    
-    console.log(captionText);
-    console.log(imageID);
-    return;
 
     // check for token
     const thistoken = sessionStorage.getItem('usertoken');
