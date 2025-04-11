@@ -706,7 +706,7 @@ async function userdelete(dataInfo) {
     
     const dataInfoJSON = JSON.parse(dataInfo);
     const captionText = dataInfoJSON.captiontext; // grab from data
-    const imageID = Number(localStorage.getItem('currentIndex'));
+    const imageID = Number(localStorage.getItem('currentIndex')) + 1;
     // set up url and body for post request
     const URL = `${servURL}/deletecaption`;
     const body = {
