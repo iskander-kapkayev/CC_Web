@@ -34,6 +34,9 @@ h2 {
   border-radius: 8px;
   align-items: center;
   overflow: auto;
+
+  margin-left: auto;
+  margin-right: auto;
   width: 65%;
 }
 
