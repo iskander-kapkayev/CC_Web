@@ -27,7 +27,17 @@ h2 {
   font-size: 16px;
 }
 
-#aboutmetext {
+.aboutmecontainer {
+  background: #FFFFFF;
+  padding: 10px;
+  box-shadow: 0 2px 4px #0000001a;
+  border-radius: 8px;
+  align-items: center;
+  overflow: auto;
+  width: 65%;
+}
+
+.aboutmecontainer #aboutmetext {
   margin-left: 20px;
 }
 
