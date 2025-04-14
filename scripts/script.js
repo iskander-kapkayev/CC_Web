@@ -385,7 +385,7 @@ function displayCaptions(currentCaptions) {
             postElement.innerHTML = `
                 <span id='captuser'>
                     <span id='postCaption'>${currentCaptions[`${i}`].captiontext}</span>
-                    <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
+                    <span id='postUser'> - ${currentCaptions[`${i}`].username} #${currentCaptions[`${i}`].category} </span>
                 </span>
                 <div id='postUpvotes'>
                     <span class='heart'> <a onclick="userdownvote(JSON.parse(this.closest('div').getAttribute('data-info')))"><i id='downvoteheart' class="material-symbols-outlined">remove</i></a></span>
@@ -456,7 +456,7 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                         postElement.innerHTML = `
                         <div id="captuser">
                             <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
-                            <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
+                            <span id="postUser"> - ${currentCaptions[`${i}`].username} #${currentCaptions[`${i}`].category} </span>
                             <span class="deletion"> <a onclick='userdelete(this.closest("div").getAttribute("data-info"))'><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
                         </div>
                         <div id="postUpvotes">
@@ -471,7 +471,7 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                         postElement.innerHTML = `
                         <div id="captuser">
                             <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
-                            <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
+                            <span id="postUser"> - ${currentCaptions[`${i}`].username} #${currentCaptions[`${i}`].category} </span>
                             <span class="deletion"> <a onclick='userdelete(this.closest("div").getAttribute("data-info"))'><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
                         </div>
                         <div id="postUpvotes">
@@ -486,7 +486,7 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                         postElement.innerHTML = `
                         <div id="captuser">
                             <span id="postCaption">${currentCaptions[`${i}`].captiontext}&ensp;</span>
-                            <span id="postUser"> - ${currentCaptions[`${i}`].username}&ensp;</span>
+                            <span id="postUser"> - ${currentCaptions[`${i}`].username} #${currentCaptions[`${i}`].category} </span>
                             <span class="deletion"> <a onclick='userdelete(this.closest("div").getAttribute("data-info"))'><i id="deleteicon" class="material-symbols-outlined">delete</i></a></span>
                         </div>
                         <div id="postUpvotes">
@@ -505,7 +505,7 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                         postElement.innerHTML = `
                         <span id='captuser'>
                             <span id='postCaption'>${currentCaptions[`${i}`].captiontext}&ensp;</span>
-                            <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
+                            <span id='postUser'> - ${currentCaptions[`${i}`].username} #${currentCaptions[`${i}`].category} </span>
                         </span>
                         <div id='postUpvotes'>
                             <span class='heart'> <a onclick='userdownvote(this.closest("div").getAttribute("data-info"))'><i id='downvoteheart' class="material-symbols-outlined">remove</i></a></span>
@@ -519,7 +519,7 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                         postElement.innerHTML = `
                         <span id='captuser'>
                             <span id='postCaption'>${currentCaptions[`${i}`].captiontext}&ensp;</span>
-                            <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
+                            <span id='postUser'> - ${currentCaptions[`${i}`].username} #${currentCaptions[`${i}`].category} </span>
                         </span>
                         <div id='postUpvotes'>
                             <span class='heart'> <a onclick='userdownvote(this.closest("div").getAttribute("data-info"))'><i id='downvoteheartVOTE' class="material-symbols-outlined">remove</i></a></span>
@@ -533,7 +533,7 @@ function displayCaptionsUser(currentCaptions, thisusername, thisuservotes) {
                         postElement.innerHTML = `
                         <span id='captuser'>
                             <span id='postCaption'>${currentCaptions[`${i}`].captiontext}&ensp;</span>
-                            <span id='postUser'> - ${currentCaptions[`${i}`].username} </span>
+                            <span id='postUser'> - ${currentCaptions[`${i}`].username} #${currentCaptions[`${i}`].category} </span>
                         </span>
                         <div id='postUpvotes'>
                             <span class='heart'> <a onclick='userdownvote(this.closest("div").getAttribute("data-info"))'><i id='downvoteheart' class="material-symbols-outlined">remove</i></a></span>
