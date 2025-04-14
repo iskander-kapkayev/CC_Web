@@ -578,12 +578,14 @@ async function userupvote(dataInfo) {
     console.log(captionText);
     const captionUser = dataInfoJSON.username; // grab from data
     const voteType = 'upvote';
+    const thisimageID = Number(localStorage.getItem('currentIndex')) + 1; // correct imageID
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
     const body = {
         captiontext: captionText, 
         captionuser: captionUser,
-        type: voteType
+        type: voteType,
+        imageid: thisimageID
     }; // body data 
     
     // check for token (and check token timer)
@@ -643,12 +645,14 @@ async function userdownvote(dataInfo) {
     const captionText = dataInfoJSON.captiontext; // grab from data
     const captionUser = dataInfoJSON.username; // grab from data
     const voteType = 'downvote';
+    const thisimageID = Number(localStorage.getItem('currentIndex')) + 1; // correct imageID
     // set up url and body for post request
     const URL = `${servURL}/votecaption`;
     const body = {
         captiontext: captionText, 
         captionuser: captionUser,
-        type: voteType
+        type: voteType,
+        imageid: thisimageID
     }; // body data 
     
     // check for token
