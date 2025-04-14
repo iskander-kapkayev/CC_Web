@@ -99,10 +99,10 @@ async function moveToImagePrev() {
     if (currentIndex < 0) {
         // if currentIndex is now -1
         // cycle back to the max.length of images
-        const maxImages = 5;
+        const maxImages = 20 - 1; // 6 is total num of images
         currentIndex = maxImages;
     } else {
-        // currentInfex is not -1
+        // currentIndex is not -1
         currentIndex = (currentIndex) % storedArray.length;
     }
     img.src = storedArray[currentIndex];
