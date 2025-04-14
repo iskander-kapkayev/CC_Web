@@ -40,6 +40,10 @@ h2 {
   width: 65%;
 }
 
+.aboutmecontainer #aboutmetext {
+  margin-left: 65px;
+}
+
 /*
 Below styles will reflect the navigation menu
 */
