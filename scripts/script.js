@@ -221,6 +221,7 @@ if (window.location.href === `${webURL}/leaderboard.html`) {
     document.addEventListener('DOMContentLoaded', async function() {
         // run grab leaderboard on this site!
         const leaderboard = await getleaderboard();
+    });
 }
 
 /*
