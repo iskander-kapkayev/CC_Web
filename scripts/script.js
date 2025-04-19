@@ -207,6 +207,22 @@ if (window.location.href === `${webURL}/`) {
     }); 
 }
 
+async function getleaderboard() {
+    let URL = `${servURL}/leaderboard`;
+    const leaders = await getDBData(URL); // this will fetch data from http request to grab all images
+    
+    //for now console log these things
+    console.log(leaders.leaderboard[0]);
+    console.log(leaders.leaderboard.length);
+}
+
+// on start up of leaderboard.html
+if (window.location.href === `${webURL}/leaderboard.html`) {
+    document.addEventListener('DOMContentLoaded', async function() {
+        // run grab leaderboard on this site!
+        const leaderboard = await getleaderboard();
+}
+
 /*
 This section is for user handling.
 Check if user exists then
