@@ -966,3 +966,8 @@ window.addEventListener('load', function() {
 
 });
 
+function index_span(changeTo) {
+    // this function will change currentIndex to this number
+    const currentIndex = changeTo - 1;
+    localStorage.setItem('currentIndex', currentIndex);
+}
