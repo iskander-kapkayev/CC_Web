@@ -1018,8 +1018,9 @@ window.addEventListener('load', function() {
 
 });
 
-function index_span(changeTo) {
+async function index_span(changeTo) {
     // this function will change currentIndex to this number
     const currentIndex = changeTo - 1;
     localStorage.setItem('currentIndex', currentIndex);
+    await collectCaptions(); // reload the page
 }
