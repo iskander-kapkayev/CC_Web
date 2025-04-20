@@ -62,8 +62,17 @@ h2 {
 table, th, td {
   text-align: left;
   table-layout: fixed;
-  border:0.25px solid;
+  border:0.25px solid black;
   border-collapse: collapse;
+}
+
+th {
+  border: 1px solid white;
+  border-collapse: collapse;
+  background-color: #81D8D0;
+}
+
+td {
   border-color: #81D8D0;
 }
 
