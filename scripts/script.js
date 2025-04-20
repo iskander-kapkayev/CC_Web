@@ -211,9 +211,40 @@ async function getleaderboard() {
     let URL = `${servURL}/leaderboard`;
     const leaders = await getDBData(URL); // this will fetch data from http request to grab all images
     
-    //for now console log these things
-    console.log(leaders.leaderboard[0]);
-    console.log(leaders.leaderboard.length);
+    // now that we have the leaders
+    // display at table in leaderboard 
+    const leaderContainer = document.getElementById('leaderdisplay');
+    leaderContainer.innerHTML = ''; // this will remove table headers
+
+    // return table headers to normal
+    let addHeader = document.createElement('th');
+    addHeader.innerHTML = "Username";
+    leaderContainer.appendChild(addHeader);
+
+    addHeader.innerHTML = "Votecount";
+    leaderContainer.appendChild(addHeader);
+
+    addHeader.innerHTML = "Power Level";
+    leaderContainer.appendChild(addHeader);
+
+    // after headers are added
+    // cycle through and add all the leaders to the board
+    try {
+        for(let i = 0; i < leaders.leaderboard.length; i++) {
+            
+            const rowElement = document.createElement('tr');
+
+            rowElement.innerHTML = `
+                <td>${leaders.leaderboard[i].username}</td>
+                <td>${leaders.leaderboard[i].votecount}</td>
+                <td>${leaders.leaderboard[i].category}</td>
+            `;
+            
+            leaderContainer.appendChild(rowElement);
+        }
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 // on start up of leaderboard.html
