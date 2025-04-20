@@ -60,7 +60,9 @@ h2 {
 }
 
 table, th, td {
-  text-align: left
+  text-align: left;
+  table-layout: fixed;
+  border:0.25px solid black;
 }
 
 /*
