@@ -217,14 +217,12 @@ async function getleaderboard() {
     leaderContainer.innerHTML = ''; // this will remove table headers
 
     // return table headers to normal
-    let addHeader = document.createElement('th');
-    addHeader.innerHTML = "Username";
-    leaderContainer.appendChild(addHeader);
-
-    addHeader.innerHTML = "Votecount";
-    leaderContainer.appendChild(addHeader);
-
-    addHeader.innerHTML = "Power Level";
+    let addHeader = document.createElement('tr');
+    addHeader.innerHTML = `
+        <th>Username</th>
+        <th>Votecount</th>
+        <th>Power Level</th>
+    `;
     leaderContainer.appendChild(addHeader);
 
     // after headers are added
