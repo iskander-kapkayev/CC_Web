@@ -220,7 +220,7 @@ async function getleaderboard() {
     let addHeader = document.createElement('tr');
     addHeader.innerHTML = `
         <th>Username</th>
-        <th>Votecount</th>
+        <th>Aura</th>
         <th>Power Level</th>
     `;
     leaderContainer.appendChild(addHeader);
