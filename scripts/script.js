@@ -246,10 +246,12 @@ async function getleaderboard() {
 }
 
 // on start up of leaderboard.html
-if (window.location.href === `${webURL}/leaderboard.html`) {
+// `${webURL}/leaderboard.html`
+
+if (window.location.href === 'https://cc-web-git-additionalfeatures-iskander-kays-projects.vercel.app/leaderboard.html') {
     document.addEventListener('DOMContentLoaded', async function() {
         // run grab leaderboard on this site!
-        const leaderboard = await getleaderboard();
+        await getleaderboard();
     });
 }
 
