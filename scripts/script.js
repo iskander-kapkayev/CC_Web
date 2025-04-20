@@ -207,6 +207,10 @@ if (window.location.href === `${webURL}/`) {
     }); 
 }
 
+/*
+this function will allow users to see a leaderboard
+*/
+
 async function getleaderboard() {
     let URL = `${servURL}/leaderboard`;
     const leaders = await getDBData(URL); // this will fetch data from http request to grab all images
