@@ -208,6 +208,58 @@ if (window.location.href === `${webURL}/`) {
 }
 
 /*
+this function will allow users to see a leaderboard
+*/
+
+async function getleaderboard() {
+    let URL = `${servURL}/leaderboard`;
+    const leaders = await getDBData(URL); // this will fetch data from http request to grab all images
+    
+    // now that we have the leaders
+    // display at table in leaderboard 
+    const leaderContainer = document.getElementById('leaderdisplay');
+    leaderContainer.innerHTML = ''; // this will remove table headers
+
+    // return table headers to normal
+    let addHeader = document.createElement('tr');
+    addHeader.innerHTML = `
+        <th>Username</th>
+        <th>Aura</th>
+        <th>Power Level</th>
+    `;
+    leaderContainer.appendChild(addHeader);
+
+    // after headers are added
+    // cycle through and add all the leaders to the board
+    try {
+        for(let i = 0; i < leaders.leaderboard.length; i++) {
+            
+            const rowElement = document.createElement('tr');
+
+            rowElement.innerHTML = `
+                <td>${leaders.leaderboard[i].username}</td>
+                <td>${leaders.leaderboard[i].votecount}</td>
+                <td>${leaders.leaderboard[i].category}</td>
+            `;
+            
+            leaderContainer.appendChild(rowElement);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// on start up of leaderboard.html
+// `${webURL}/leaderboard.html`
+
+if (window.location.href === 'https://cc-web-git-additionalfeatures-iskander-kays-projects.vercel.app/leaderboard.html') {
+    document.addEventListener('DOMContentLoaded', async function() {
+        // run grab leaderboard on this site!
+        await getleaderboard();
+    });
+}
+
+/*
 This section is for user handling.
 Check if user exists then
 Grab form data to sign in or register.
@@ -966,3 +1018,8 @@ window.addEventListener('load', function() {
 
 });
 
+function index_span(changeTo) {
+    // this function will change currentIndex to this number
+    const currentIndex = changeTo - 1;
+    localStorage.setItem('currentIndex', currentIndex);
+}
