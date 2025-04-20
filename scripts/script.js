@@ -1022,5 +1022,14 @@ async function index_span(changeTo) {
     // this function will change currentIndex to this number
     const currentIndex = changeTo - 1;
     localStorage.setItem('currentIndex', currentIndex);
+
+    // get the image array
+    const img = document.getElementById('myImage');
+    const storedArrayString = sessionStorage.getItem('imageURLs');
+    const storedArray = JSON.parse(storedArrayString);
+    
+    img.src = storedArray[currentIndex];
+    img.alt = `index ${currentIndex}`;
+
     await collectCaptions(); // reload the page
 }
