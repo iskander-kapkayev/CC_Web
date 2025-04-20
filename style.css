@@ -59,6 +59,10 @@ h2 {
   width: 45%;
 }
 
+table, th, td {
+  text-align: left
+}
+
 /*
 Below styles will reflect the navigation menu
 */
